@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!--=============== FONTS ===============-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
+		rel="stylesheet">
+
+	<!--=============== ICONS ===============-->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
+
+	<!--=============== SWIPER CSS ===============-->
+	<link rel="stylesheet" href="" />
+
+	<!--=============== CSS ===============-->
+	<link rel="stylesheet" href="assets/css/styles.css" />
+
+	<title>UOW Room Booking System</title>
+</head>
+
+<body>
+	<!--==================== HEADER ====================-->
+	<header class="header" id="header">
+		<div class="container">
+			<nav>
+				<div class="nav-logo">
+					<a href="#"><img src="assets/img/logo-uow.png" alt="logo" style="height: 32px" /></a>
+				</div>
+
+				<ul role="list" class="nav-list">
+					<li><a href="#">Book Now</a></li>
+					<li><a href="#">View Booking</a></li>
+					<li><a href="#">Contact Us</a></li>
+					<li><a href="#">Cart</a></li>
+					<li><a href="#" id="login-button">Login</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<!--==================== MAIN ====================-->
+	<main class="main">
+		<!--==================== HOME ====================-->
+		<img src="/assets/img/meeting-room.png" alt="meeting-room" />
+
+		<div class="container" id="home-search-form">
+			<h1>Find a space that works for you!</h1>
+
+			<div id="search-row-one">
+				<div class="search-field" id="search-location">
+
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+						fill="currentColor">
+						<path
+							d="M18.364 17.364L12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364ZM12 15C14.2091 15 16 13.2091 16 11C16 8.79086 14.2091 7 12 7C9.79086 7 8 8.79086 8 11C8 13.2091 9.79086 15 12 15ZM12 13C10.8954 13 10 12.1046 10 11C10 9.89543 10.8954 9 12 9C13.1046 9 14 9.89543 14 11C14 12.1046 13.1046 13 12 13Z">
+						</path>
+					</svg>
+
+					<input type="text" id="search-location-input" placeholder="LOCATION" />
+				</div>
+				<div class="search-field" id="search-date" onclick="">
+
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+						fill="currentColor">
+						<path
+							d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM8 13V15H6V13H8ZM13 13V15H11V13H13ZM18 13V15H16V13H18ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
+						</path>
+					</svg>
+
+					<!-- Make a function to display current date -->
+					<span id="search-date-text">DATE</span>
+				</div>
+			</div>
+			<div id="search-row-two">
+				<div class="search-field" id="search-startTime" onclick="">
+
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+						fill="currentColor">
+						<path
+							d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM13 12V7H11V14H17V12H13Z">
+						</path>
+					</svg>
+
+					<span>START TIME</span>
+				</div>
+
+				<div class="search-field" id="search-endTime" onclick="">
+
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+						fill="currentColor">
+						<path
+							d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM13 12V7H11V14H17V12H13Z">
+						</path>
+					</svg>
+
+					<span>END TIME</span>
+				</div>
+
+				<div class="search-field" id="search-capacity">
+
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+						fill="currentColor">
+						<path
+							d="M2 22C2 17.5817 5.58172 14 10 14C14.4183 14 18 17.5817 18 22H2ZM10 13C6.685 13 4 10.315 4 7C4 3.685 6.685 1 10 1C13.315 1 16 3.685 16 7C16 10.315 13.315 13 10 13ZM17.3628 15.2332C20.4482 16.0217 22.7679 18.7235 22.9836 22H20C20 19.3902 19.0002 17.0139 17.3628 15.2332ZM15.3401 12.9569C16.9728 11.4922 18 9.36607 18 7C18 5.58266 17.6314 4.25141 16.9849 3.09687C19.2753 3.55397 21 5.57465 21 8C21 10.7625 18.7625 13 16 13C15.7763 13 15.556 12.9853 15.3401 12.9569Z">
+						</path>
+					</svg>
+
+					<select name="search-capacity" id="search-capacity-input">
+						<option value="" selected disabled>CAPACITY</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+					</select>
+
+				</div>
+				<button id="search-submit" onclick="alert('Hello world!')">
+					Search
+
+			</div>
+		</div>
+	</main>
+
+	<!--=============== SWIPER JS ===============-->
+	<script src=""></script>
+
+	<!--=============== MAIN JS ===============-->
+	<script src="assets/js/main.js"></script>
+</body>
+
+</html>
