@@ -74,26 +74,10 @@
 				<p class="pageName">PAYMENT</p>
 			</div>
 		</div>
-		<div class="container" id="searchResultContainer">
-			<div id="leftCol">
-				<input type="text" /><br />
-				<input type="text" /><br />
-				<input type="text" /><br />
-				<input type="text" /><br />
-				<input type="text" /><br />
-				<button>Search</button>
-			</div>
-			<div id="rightCol">
-				<div class="dropdown" data-dropdown>
-					<button class="link" data-dropdown-button>Sort By:</button>
-					<div class="dropdown-menu">
-						<a href="">Best Match</a>
-						<a href="">Lowest Price</a>
-						<a href="">Highest Price</a>
-					</div>
-				</div>
 
-				<div class="searchResult">
+		<div class="container" id="reviewPageContainer">
+			<div id="selectedRoomContainer">
+				<div class="selectedRoom">
 					<img
 						src="assets/img/images.jpg"
 						alt="room image"
@@ -132,85 +116,16 @@
 						<button>Reserve</button>
 					</div>
 				</div>
-
-				<div class="searchResult">
-					<img
-						src="assets/img/images.jpg"
-						alt="room image"
-						width="133px"
-						height="133px"
-						style="border-radius: 10px"
-					/>
-					<div class="roomDescriptionSecondCol">
-						<h1>Meeting Room A</h1>
-						<div class="roomDescription">
-							<span class="material-icons"> location_on </span>
-							<span>Location: </span>
-							<span>HQ SIM, Block A</span>
-						</div>
-						<div class="roomDescription">
-							<span class="material-icons"> group </span>
-							<span>Capacity: </span>
-							<span>Up to 4 people</span>
-						</div>
-						<div id="bookingTimeDescription">
-							<div id="startTime">
-								<h1>Start</h1>
-								<h1>12:00 PM</h1>
-							</div>
-							<span class="material-symbols-outlined">
-								arrow_forward
-							</span>
-							<div id="endTime">
-								<h1>End</h1>
-								<h1>01:00 PM</h1>
-							</div>
-						</div>
+			</div>
+			<div>
+				<div class="orderSummaryCard">
+					<div id="bookingDuration"><h1>Duration:</h1></div>
+					<div id="bookingSubtotal"><h1>Subtotal:</h1></div>
+					<div style="font-size: 10px; color: rgba(0, 0, 0, 0.4)">
+						Promo Code to be applied in payment.
 					</div>
-					<div class="roomDescriptionThirdCol">
-						<h1 class="roomPrice">$2.00</h1>
-						<button id="reserveButton">Reserve</button>
-					</div>
-				</div>
-
-				<div class="searchResult">
-					<img
-						src="assets/img/images.jpg"
-						alt="room image"
-						width="133px"
-						height="133px"
-						style="border-radius: 10px"
-					/>
-					<div class="roomDescriptionSecondCol">
-						<h1>Meeting Room A</h1>
-						<div class="roomDescription">
-							<span class="material-icons"> location_on </span>
-							<span>Location: </span>
-							<span>HQ SIM, Block A</span>
-						</div>
-						<div class="roomDescription">
-							<span class="material-icons"> group </span>
-							<span>Capacity: </span>
-							<span>Up to 4 people</span>
-						</div>
-						<div id="bookingTimeDescription">
-							<div id="startTime">
-								<h1>Start</h1>
-								<h1>12:00 PM</h1>
-							</div>
-							<span class="material-symbols-outlined">
-								arrow_forward
-							</span>
-							<div id="endTime">
-								<h1>End</h1>
-								<h1>01:00 PM</h1>
-							</div>
-						</div>
-					</div>
-					<div class="roomDescriptionThirdCol">
-						<h1 class="roomPrice">$2.00</h1>
-						<button id="reserveButton">Reserve</button>
-					</div>
+					<div id="bookingTotal"><h1>Total:</h1></div>
+					<button id="checkoutButton">Checkout</button>
 				</div>
 			</div>
 		</div>

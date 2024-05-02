@@ -177,6 +177,7 @@ nav {
 .nav-list {
 	display: inline-flex;
 	padding: 0, 0.5em;
+	align-items: center;
 }
 
 nav ul li {
@@ -190,7 +191,6 @@ nav ul li a {
 
 #login-button {
 	padding: 0.25em 0.5em;
-	background-color: var(--primary-color);
 	border-radius: 10px;
 	color: var(--white-color);
 	font-weight: var(--fw-semi-bold);
@@ -234,6 +234,8 @@ button {
 
 button:hover {
 	background-color: rgb(84, 147, 82);
+	cursor: pointer;
+	transition: background-color 150ms ease-in;
 }
 /*=============== HEADER & NAV ===============*/
 
@@ -394,12 +396,40 @@ button:hover {
 	align-items: center;
 }
 
-#sortButton select,
-#sortButton select option {
-	cursor: pointer;
-	padding-left: 0.25rem;
-	background-color: transparent;
-	border: none;
+.dropdown > .link {
+	position: relative;
+	padding: 0.5rem 1rem;
+}
+
+.dropdown-menu {
+	position: absolute;
+	background-color: white;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+	opacity: 0;
+	transition: opacity 150ms ease-in-out;
+}
+
+.dropdown.active > .link + .dropdown-menu {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+
+.dropdown.active > .link {
+	background-color: rgb(84, 147, 82);
+}
+
+.dropdown-menu a {
+	padding: 0.5rem 0;
+	text-decoration: none;
+	color: var(--text-color);
+	display: flex;
+}
+
+.dropdown-menu a:hover {
+	color: #0000ee;
 }
 
 .searchResult {
@@ -422,6 +452,10 @@ button:hover {
 	padding-right: 0.25rem;
 }
 
+.roomDescriptionSecondCol {
+	flex-grow: 2;
+}
+
 #bookingTimeDescription {
 	display: flex;
 	padding-top: 1rem;
@@ -429,9 +463,9 @@ button:hover {
 	align-items: center;
 }
 .roomDescriptionThirdCol {
-	margin-left: auto;
-	display: grid;
-	align-content: flex-end;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 
 .roomDescriptionThirdCol h1 {
@@ -449,22 +483,67 @@ button:hover {
 	color: white;
 }
 
-.roomDescriptionThirdCol button {
-	padding: 0.5rem 1rem;
-	border-radius: 10px;
-	background-color: var(--primary-color);
-	font-size: 12px;
-	border: none;
-	font-weight: var(--fw-semi-bold);
-	color: white;
-}
-
 .roomDescriptionThirdCol button:hover {
 	cursor: pointer;
 	background-color: rgb(84, 147, 82);
 }
-.roomDescription {
+
+/*=============== REVIEW PAGE ===============*/
+#reviewPageContainer {
+	display: flex;
+	justify-content: space-between;
+	width: 885px;
+	margin-top: 1rem;
+	column-gap: 1rem;
 }
+
+#selectedRoomContainer {
+	flex-grow: 2;
+}
+
+.selectedRoom {
+	display: flex;
+	flex-grow: 2;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 20px;
+	padding: 1rem;
+	column-gap: 1rem;
+}
+
+.orderSummaryCard {
+	background-color: var(--secondary-color);
+	border-radius: 15px;
+	padding: 1rem 1.5rem;
+	width: 255px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 15px;
+}
+
+.orderSummaryCard h1 {
+	display: flex;
+	font-weight: var(--fw-semi-bold);
+	margin-bottom: 0.5rem;
+	height: auto;
+}
+
+#bookingTotal {
+	padding: 0.5rem 0;
+	display: flex;
+	margin: 0.5rem 0;
+	align-content: center;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#bookingTotal h1 {
+	margin-bottom: 0;
+}
+
+#checkoutButton {
+	width: 100%;
+	margin-top: 0.5rem;
+}
+
 /*=============== SCROLL BAR ===============*/
 
 /*=============== BREAKPOINTS ===============*/
