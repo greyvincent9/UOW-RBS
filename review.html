@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!--=============== FONTS ===============-->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!--=============== ICONS ===============-->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
+		/>
+
+		<!--=============== SWIPER CSS ===============-->
+		<link rel="stylesheet" href="" />
+
+		<!--=============== CSS ===============-->
+		<link rel="stylesheet" href="assets/css/styles.css" />
+
+		<title>UOW Room Booking System</title>
+	</head>
+
+	<body>
+		<header class="header" id="header">
+			<div class="container">
+				<nav>
+					<div class="nav-logo">
+						<a href="#"
+							><img
+								src="assets/img/logo-uow.png"
+								alt="logo"
+								style="height: 32px"
+						/></a>
+					</div>
+
+					<ul role="list" class="nav-list">
+						<li><a href="#">Book Now</a></li>
+						<li><a href="#">View Booking</a></li>
+						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">Cart</a></li>
+						<li><button id="login-button">Login</button></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!--==================== MAIN ====================-->
+		<div class="container" id="pageIndicator">
+			<div class="pageIndicator" id="selectPageIndicator">
+				<div class="pageNumber">1</div>
+				<p class="pageName">ROOM</p>
+			</div>
+			<div class="pageIndicator" id="reviewPageIndicator">
+				<div class="pageNumber">2</div>
+				<p class="pageName">REVIEW</p>
+			</div>
+			<div class="pageIndicator" id="paymentPageIndicator">
+				<div class="pageNumber">3</div>
+				<p class="pageName">PAYMENT</p>
+			</div>
+		</div>
+
+		<div class="container" id="reviewPageContainer">
+			<div id="selectedRoomContainer">
+				<div class="selectedRoom">
+					<img
+						src="assets/img/images.jpg"
+						alt="room image"
+						width="133px"
+						height="133px"
+						style="border-radius: 10px"
+					/>
+					<div class="roomDescriptionSecondCol">
+						<h1>Meeting Room A</h1>
+						<div class="roomDescription">
+							<span class="material-icons"> location_on </span>
+							<span>Location: </span>
+							<span>HQ SIM, Block A</span>
+						</div>
+						<div class="roomDescription">
+							<span class="material-icons"> group </span>
+							<span>Capacity: </span>
+							<span>Up to 4 people</span>
+						</div>
+						<div id="bookingTimeDescription">
+							<div id="startTime">
+								<h1>Start</h1>
+								<h1>12:00 PM</h1>
+							</div>
+							<span class="material-symbols-outlined">
+								arrow_forward
+							</span>
+							<div id="endTime">
+								<h1>End</h1>
+								<h1>01:00 PM</h1>
+							</div>
+						</div>
+					</div>
+					<div class="roomDescriptionThirdCol">
+						<h1 class="roomPrice">$2.00</h1>
+						<button>Reserve</button>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="orderSummaryCard">
+					<div id="bookingDuration"><h1>Duration:</h1></div>
+					<div id="bookingSubtotal"><h1>Subtotal:</h1></div>
+					<div style="font-size: 10px; color: rgba(0, 0, 0, 0.4)">
+						Promo Code to be applied in payment.
+					</div>
+					<div id="bookingTotal"><h1>Total:</h1></div>
+					<button id="checkoutButton">Checkout</button>
+				</div>
+			</div>
+		</div>
+		<!--=============== SWIPER JS ===============-->
+		<script src=""></script>
+
+		<!--=============== MAIN JS ===============-->
+		<script src="assets/js/main.js" defer></script>
+	</body>
+</html>
