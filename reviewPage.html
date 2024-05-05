@@ -75,7 +75,7 @@
 			</div>
 		</div>
 
-		<div class="container" id="reviewPageContainer">
+		<div class="container" class="pageContainer" id="reviewPageContainer">
 			<div id="selectedRoomContainer">
 				<div class="selectedRoom">
 					<img
@@ -113,18 +113,27 @@
 					</div>
 					<div class="roomDescriptionThirdCol">
 						<h1 class="roomPrice">$2.00</h1>
-						<button>Reserve</button>
+						<button>Modify</button>
 					</div>
 				</div>
 			</div>
 			<div>
 				<div class="orderSummaryCard">
-					<div id="bookingDuration"><h1>Duration:</h1></div>
-					<div id="bookingSubtotal"><h1>Subtotal:</h1></div>
+					<div class="orderSummaryInfo" id="reviewBookingDuration">
+						<h1>Duration:</h1>
+						<span>1 hour</span>
+					</div>
+					<div class="orderSummaryInfo" id="reviewBookingSubtotal">
+						<h1>Subtotal:</h1>
+						<span>$2.00</span>
+					</div>
 					<div style="font-size: 10px; color: rgba(0, 0, 0, 0.4)">
 						Promo Code to be applied in payment.
 					</div>
-					<div id="bookingTotal"><h1>Total:</h1></div>
+					<div class="orderSummaryInfo" id="reviewBookingTotal">
+						<h1>Total:</h1>
+						<span id="reviewTotalAmount">$2.00</span>
+					</div>
 					<button id="checkoutButton">Checkout</button>
 				</div>
 			</div>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!--=============== FONTS ===============-->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!--=============== ICONS ===============-->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
+		/>
+
+		<!--=============== SWIPER CSS ===============-->
+		<link rel="stylesheet" href="" />
+
+		<!--=============== CSS ===============-->
+		<link rel="stylesheet" href="assets/css/styles.css" />
+
+		<title>UOW Room Booking System</title>
+	</head>
+
+	<body>
+		<header class="header" id="header">
+			<div class="container">
+				<nav>
+					<div class="nav-logo">
+						<a href="#"
+							><img
+								src="assets/img/logo-uow.png"
+								alt="logo"
+								style="height: 32px"
+						/></a>
+					</div>
+
+					<ul role="list" class="nav-list">
+						<li><a href="#">Book Now</a></li>
+						<li><a href="#">View Booking</a></li>
+						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">Cart</a></li>
+						<li><button id="login-button">Login</button></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!--==================== MAIN ====================-->
+		<main>
+			<div class="container" id="pageIndicator">
+				<div class="pageIndicator" id="selectPageIndicator">
+					<div class="pageNumber">1</div>
+					<p class="pageName">ROOM</p>
+				</div>
+				<div class="pageIndicator" id="reviewPageIndicator">
+					<div class="pageNumber">2</div>
+					<p class="pageName">REVIEW</p>
+				</div>
+				<div class="pageIndicator" id="paymentPageIndicator">
+					<div class="pageNumber">3</div>
+					<p class="pageName">PAYMENT</p>
+				</div>
+			</div>
+
+			<div class="container" id="paymentPageContainer">
+				<div id="paymentDetailContainer">
+					<h1>Payment Details</h1>
+					<div id="paymentDetail">
+						<label for="cardholderName">Cardholder Name</label
+						><br />
+						<input
+							type="text"
+							class="longInput"
+							id="cardholderName"
+							placeholder="1111 2222 3333 4444"
+						/><br />
+						<label for="cardNumber">Card Number</label><br />
+						<input
+							type="text"
+							placeholder="John Doe"
+							class="longInput"
+						/><br />
+
+						<div id="cardDetailThirdRow">
+							<div id="expiryDate">
+								<label for="expiryDate">Expiry Date</label
+								><br />
+								<input type="number" placeholder="MM/YY" />
+							</div>
+
+							<div id="cVV">
+								<label for="cVV">CVV</label><br />
+								<input type="number" placeholder="CVV" /><br />
+							</div>
+						</div>
+
+						<label for="promoCode">Promo Code</label>
+						<div id="promoCodeRow">
+							<input
+								type="text"
+								name="promoCode"
+								placeholder="SAVE20NOW"
+							/>
+
+							<button>Apply Code</button>
+						</div>
+
+						<button id="completePurchaseButton">
+							Complete Purchase
+						</button>
+					</div>
+				</div>
+				<div>
+					<div class="orderSummaryCard">
+						<div
+							class="orderSummaryInfo"
+							id="reviewBookingDuration"
+						>
+							<h1>Duration:</h1>
+							<span>1 hour</span>
+						</div>
+						<div
+							class="orderSummaryInfo"
+							id="reviewBookingSubtotal"
+						>
+							<h1>Subtotal:</h1>
+							<span>$2.00</span>
+						</div>
+
+						<div class="orderSummaryInfo" id="reviewBookingTotal">
+							<h1>Total:</h1>
+							<span id="reviewTotalAmount">$2.00</span>
+						</div>
+						<button id="checkoutButton">Checkout</button>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!--=============== SWIPER JS ===============-->
+		<script src=""></script>
+
+		<!--=============== MAIN JS ===============-->
+		<script src="assets/js/main.js" defer></script>
+	</body>
+</html>

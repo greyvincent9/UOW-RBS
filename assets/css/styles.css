@@ -14,6 +14,8 @@
 	--secondary-a1-color: rgb(164, 219, 162, 0.2);
 	--white-color: rgb(255, 255, 255);
 	--body-color: rgb(10, 12, 12);
+	--red-color: rgb(176, 111, 98);
+	--red-hover-color: rgb(137, 87, 77);
 
 	/*========== Font and typography ==========*/
 	/*.5rem = 8px | 1rem = 16px ...*/
@@ -147,6 +149,13 @@ a:not([class]) {
 	width: min(var(--max-width), 100% - var(--padding) * 2);
 }
 
+.pageContainer {
+	display: flex;
+	justify-content: space-between;
+	width: 885px;
+	margin-top: 1rem;
+}
+
 nav {
 	max-width: 1064px;
 	margin: auto;
@@ -272,10 +281,23 @@ button:hover {
 }
 
 .search-field {
+	display: flex;
+	align-items: center;
 	height: 64px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 5px;
-	justify-content: center;
+	/* justify-content: center; */
+}
+
+.search-field span {
+	padding: 0.5rem 0.25rem;
+}
+
+.search-field input,
+.search-field select {
+	border: none;
+	background-color: transparent;
+	padding: 0.25rem;
 }
 
 #search-row-one,
@@ -287,8 +309,8 @@ button:hover {
 }
 
 #search-row-one .search-field {
-	display: flex;
 	width: 476px;
+	line-height: 24px;
 	justify-content: left;
 	align-items: center;
 	padding-left: 1rem;
@@ -296,7 +318,6 @@ button:hover {
 
 #search-row-two .search-field {
 	display: flex;
-
 	justify-content: left;
 	align-items: center;
 	padding-left: 1rem;
@@ -329,6 +350,7 @@ button:hover {
 	background: transparent;
 	border: none;
 	width: 100%;
+	padding: 0.25rem;
 }
 /* Swiper class */
 
@@ -510,6 +532,14 @@ button:hover {
 	column-gap: 1rem;
 }
 
+.selectedRoom button {
+	background-color: var(--red-color);
+}
+
+.selectedRoom button:hover {
+	background-color: var(--red-hover-color);
+}
+
 .orderSummaryCard {
 	background-color: var(--secondary-color);
 	border-radius: 15px;
@@ -520,13 +550,22 @@ button:hover {
 }
 
 .orderSummaryCard h1 {
-	display: flex;
+	/* display: flex; */
 	font-weight: var(--fw-semi-bold);
 	margin-bottom: 0.5rem;
 	height: auto;
 }
 
-#bookingTotal {
+.orderSummaryInfo {
+	display: flex;
+	justify-content: space-between;
+}
+
+.orderSummaryInfo span {
+	font-weight: 700;
+}
+
+#reviewBookingTotal {
 	padding: 0.5rem 0;
 	display: flex;
 	margin: 0.5rem 0;
@@ -535,16 +574,140 @@ button:hover {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-#bookingTotal h1 {
+#reviewBookingTotal h1 {
 	margin-bottom: 0;
 }
 
 #checkoutButton {
+	font-weight: 700;
 	width: 100%;
 	margin-top: 0.5rem;
 }
 
-/*=============== SCROLL BAR ===============*/
+/*===============  PAYMENT PAGE ===============*/
+#paymentPageContainer {
+	display: flex;
+	justify-content: space-between;
+	width: 885px;
+	margin-top: 1rem;
+	column-gap: 5rem;
+}
+
+#paymentDetailContainer h1 {
+	font-size: 1.77rem;
+}
+
+#paymentDetailContainer button {
+	font-weight: 700;
+}
+
+#paymentDetailContainer {
+	flex-grow: 2;
+}
+
+#paymentDetail {
+	margin-top: 1rem;
+}
+
+#paymentDetail label {
+	margin-bottom: 0.25rem 0;
+}
+
+#paymentDetail input {
+	margin-bottom: 1rem;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 1rem;
+}
+
+.longInput {
+	width: 100%;
+}
+
+#cardDetailThirdRow {
+	display: flex;
+	justify-content: space-between;
+}
+
+#cardDetailThirdRow > input {
+	width: 40%;
+}
+
+#cVVInput {
+	width: 144px;
+}
+
+#promoCodeRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#promoCodeRow button {
+	height: 40px;
+}
+
+#promoCodeRow > input {
+	margin-right: 1rem;
+	flex-grow: 2;
+}
+
+#completePurchaseButton {
+	width: 100%;
+	height: 40px;
+}
+
+/*=============== VIEW BOOKING PAGE ===============*/
+#viewBookingContainer {
+	padding: 2rem 0;
+}
+
+.pageHeading {
+	font-size: 1.77rem;
+	margin-bottom: 1rem;
+}
+/*=============== ORDER CONFIRMATION PAGE ===============*/
+#orderConfirmationText {
+	padding: 2rem 0;
+	text-align: center;
+}
+
+#orderConfirmationText p {
+	padding: 0.5rem 0;
+}
+
+#receiptContainer {
+	margin: auto;
+	width: 80%;
+}
+
+#receiptDescription {
+	margin: 2.5rem 0;
+	padding: 0.5rem 0;
+}
+
+#receiptRowOne {
+	padding: 0.5rem 0;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+#receiptRowOne > div {
+	padding: 0.25rem 0;
+}
+
+#receiptRowTwo {
+	padding: 1.5rem 0;
+	border-bottom: 1px solid black;
+}
+
+.receiptAmount {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */

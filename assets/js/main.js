@@ -1,3 +1,4 @@
+/// Sort By Button Function
 document.addEventListener("click", (e) => {
 	const isDropdownButton = e.target.matches("[data-dropdown-button]");
 
@@ -15,3 +16,26 @@ document.addEventListener("click", (e) => {
 		dropdown.classList.remove("active");
 	});
 });
+
+// Load JSON
+var http = new XMLHttpRequest();
+http.open("GET", "room.json", true);
+http.send();
+http.onload = function () {
+	// Checking for status
+	if (this.readyState == 4 && this.status == 200) {
+		// if successful
+		var jsonText = http.responseText;
+		var room = JSON.parse(jsonText);
+
+		// empty var to add incoming data
+		var output = "";
+		console.log(room);
+		display(room);
+	}
+};
+
+// Need a function to process the JSON data
+//
+
+const rooms = JSON.parse();

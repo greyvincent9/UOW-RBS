@@ -1,0 +1,42 @@
+[
+	{
+		"id": "1",
+		"image": "/assets/img/images.jpg",
+		"name": "Meeting Room",
+		"location": "HQ SIM, Block A",
+		"price": "2.00",
+		"capacity": "4"
+	},
+	{
+		"id": "2",
+		"image": "/assets/img/images.jpg",
+		"name": "Meeting Room",
+		"location": "HQ SIM, Block A",
+		"price": "2.00",
+		"capacity": "4"
+	},
+	{
+		"id": "3",
+		"image": "/assets/img/images.jpg",
+		"name": "Meeting Room",
+		"location": "HQ SIM, Block A",
+		"price": "2.00",
+		"capacity": "4"
+	},
+	{
+		"id": "4",
+		"image": "/assets/img/images.jpg",
+		"name": "Meeting Room",
+		"location": "HQ SIM, Block A",
+		"price": "2.00",
+		"capacity": "4"
+	},
+	{
+		"id": "5",
+		"image": "/assets/img/images.jpg",
+		"name": "Meeting Room",
+		"location": "HQ SIM, Block A",
+		"price": "2.00",
+		"capacity": "4"
+	}
+]
