@@ -1,42 +1,56 @@
 [
 	{
-		"id": "1",
+		"id": 1,
+		"name": "Room 101",
 		"image": "/assets/img/images.jpg",
-		"name": "Meeting Room",
-		"location": "HQ SIM, Block A",
-		"price": "2.00",
-		"capacity": "4"
+		"location": "UOW Campus - Library Level 2",
+		"capacity": 4,
+		"price": 2,
+		"availability": {
+			"2024-05-04": {
+				"09:00": { "booked": false },
+				"10:00": { "booked": false }
+			},
+			"2024-05-05": {
+				"09:00": { "booked": false },
+				"10:00": { "booked": false }
+			}
+		}
 	},
 	{
-		"id": "2",
+		"id": 2,
+		"name": "Room 102",
 		"image": "/assets/img/images.jpg",
-		"name": "Meeting Room",
-		"location": "HQ SIM, Block A",
-		"price": "2.00",
-		"capacity": "4"
+		"location": "UOW Campus - Library Level 2",
+		"capacity": 4,
+		"price": 2,
+		"availability": {
+			"2024-05-04": {
+				"09:00": { "booked": false },
+				"10:00": { "booked": false }
+			},
+			"2024-05-05": {
+				"09:00": { "booked": false },
+				"10:00": { "booked": false }
+			}
+		}
 	},
 	{
-		"id": "3",
+		"id": 3,
+		"name": "Room 103",
 		"image": "/assets/img/images.jpg",
-		"name": "Meeting Room",
-		"location": "HQ SIM, Block A",
-		"price": "2.00",
-		"capacity": "4"
-	},
-	{
-		"id": "4",
-		"image": "/assets/img/images.jpg",
-		"name": "Meeting Room",
-		"location": "HQ SIM, Block A",
-		"price": "2.00",
-		"capacity": "4"
-	},
-	{
-		"id": "5",
-		"image": "/assets/img/images.jpg",
-		"name": "Meeting Room",
-		"location": "HQ SIM, Block A",
-		"price": "2.00",
-		"capacity": "4"
+		"location": "UOW Campus - Library Level 1",
+		"capacity": 4,
+		"price": 2,
+		"availability": {
+			"2024-05-04": {
+				"09:00": { "booked": false },
+				"10:00": { "booked": false }
+			},
+			"2024-05-05": {
+				"09:00": { "booked": false },
+				"10:00": { "booked": false }
+			}
+		}
 	}
 ]
