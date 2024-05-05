@@ -327,7 +327,6 @@ select {
 
 #search-submit {
 	height: 56px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 5px;
 	width: 190px;
 	flex-grow: 2;
@@ -340,6 +339,15 @@ select {
 /* Swiper animation */
 
 /*=============== SELECT ROOM PAGE ===============*/
+#searchBar {
+	display: flex;
+	justify-content: space-between;
+}
+
+#searchBar > div {
+	height: 40px;
+}
+
 #pageIndicator {
 	display: flex;
 	justify-content: space-between;

@@ -1,17 +1,39 @@
 /*=============== HOME ===============*/
 
 // Set Date
-const datePicker = document.getElementById("searchDate");
-var today = new Date();
-var formattedDate = today.toISOString().split("T")[0];
-datePicker.value = formattedDate;
-datePicker.min = formattedDate;
-let maxDate = new Date();
-maxDate.setDate(today.getDate() + 20);
+var currentPage = window.location.pathname;
 
-let formattedMaxDate = maxDate.toISOString().split("T")[0];
+if (currentPage === "/index.html" && currentPage === "/viewRoom.html") {
+	const datePicker = document.getElementById("searchDate");
+	var today = new Date();
+	var formattedDate = today.toISOString().split("T")[0];
+	datePicker.value = formattedDate;
+	datePicker.min = formattedDate;
+	let maxDate = new Date();
+	maxDate.setDate(today.getDate() + 20);
 
-datePicker.max = formattedMaxDate;
+	let formattedMaxDate = maxDate.toISOString().split("T")[0];
+
+	datePicker.max = formattedMaxDate;
+}
+
+/*=============== PAGE INDICATIOR ===============*/
+console.log(currentPage);
+
+if (currentPage === "/viewRoom.html") {
+	document.getElementById("reviewPageIndicator").style.opacity = "40%";
+	document.getElementById("paymentPageIndicator").style.opacity = "40%";
+} else if (currentPage === "/reviewPage.html") {
+	console.log(currentPage);
+	document.getElementById("roomPageIndicator").style.opacity = "40%";
+	document.getElementById("paymentPageIndicator").style.opacity = "40%";
+} else if (currentPage === "/payment.html") {
+	console.log(currentPage);
+	document.getElementById("roomPageIndicator").style.opacity = "40%";
+	document.getElementById("reviewPageIndicator").style.opacity = "40%";
+}
+
+/*=============== PAGE INDICATIOR ===============*/
 
 /*=============== SELECT ROOM ===============*/
 /// Sort By Button Function

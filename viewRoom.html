@@ -31,23 +31,68 @@
 		<div class="container">
 			<nav>
 				<div class="nav-logo">
-					<a href="#"><img src="assets/img/logo-uow.png" alt="logo" style="height: 32px" /></a>
+					<a href="index.html"><img src="assets/img/logo-uow.png" alt="logo" style="height: 32px" /></a>
 				</div>
 
 				<ul role="list" class="nav-list">
-					<li><a href="#">Book Now</a></li>
-					<li><a href="#">View Booking</a></li>
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">Cart</a></li>
-					<li><button id="login-button">Login</button></li>
+					<li><a href="viewRoom.html">Book Now</a></li>
+					<li><a href="viewBooking.html">View Booking</a></li>
+					<li><a href="">Contact Us</a></li>
+					<li><a href="">Cart</a></li>
+					<li><button href="" id="login-button">Login</button></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
 
 	<!--==================== MAIN ====================-->
+	<div class="container" id="searchBar">
+
+
+		<div class="search-field" id="search-location">
+
+
+			<select id="search-location-input" placeholder="LOCATION">
+				<option value="" disabled selected>LOCATION</option>
+				<!-- LOAD DATA FROM JSON -->
+
+
+			</select>
+
+		</div>
+		<div class="search-field" id="search-date" onclick="">
+
+
+
+			<!-- Make a function to display current date -->
+			<!-- <span id="search-date-text">DATE</span> -->
+			<input type="date" name="searchDate" id="searchDate">
+
+		</div>
+		<div class="search-field" id="search-capacity">
+
+
+
+			<select name="search-capacity" id="search-capacity-input">
+				<option value="" selected disabled>CAPACITY</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>
+
+		</div>
+		<button id="search">Search</button>
+
+
+	</div>
 	<div class="container" id="pageIndicator">
-		<div class="pageIndicator" id="selectPageIndicator">
+		<div class="pageIndicator" id="roomPageIndicator">
 			<div class="pageNumber">1</div>
 			<p class="pageName">ROOM</p>
 		</div>
@@ -61,14 +106,7 @@
 		</div>
 	</div>
 	<div class="container" id="viewRoomPageContainer">
-		<div id="leftCol">
-			<input type="text" /><br />
-			<input type="text" /><br />
-			<input type="text" /><br />
-			<input type="text" /><br />
-			<input type="text" /><br />
-			<button>Search</button>
-		</div>
+
 		<div id="searchResultColumn">
 			<!-- <div class="dropdown" data-dropdown>
 				<button class="link" data-dropdown-button>Sort By:</button>
