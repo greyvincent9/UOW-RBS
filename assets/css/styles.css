@@ -388,8 +388,9 @@ select {
 }
 
 .roomContainer {
-	margin-top: 1rem;
 	margin: auto;
+	margin-top: 2rem;
+
 	width: 100%;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 20px;
@@ -402,8 +403,8 @@ select {
 }
 
 .room > img {
-	width: 144px;
-	height: 144px;
+	width: 140px;
+	height: 140px;
 	border-radius: 10px;
 	margin-right: 1rem;
 }
@@ -429,21 +430,23 @@ select {
 
 .roomDescriptionThirdCol {
 	display: grid;
-	/* grid-template-columns: 1fr 1fr 1fr 1fr; */
 	grid-template-columns: 100px 100px 100px 100px 100px;
 	column-gap: 2rem;
 
-	/* justify-content: space-between; */
-	row-gap: 2rem;
-	overflow: auto;
+	row-gap: 3rem;
 	flex-grow: 2;
 	padding-left: 1rem;
 }
 
-.roomDescriptionThirdCol button {
+.timeSlot {
+	height: 45px;
 	text-align: center;
-	text-transform: ;
-	/* justify-self: center; */
+}
+
+.active {
+	color: white;
+	border-bottom: 5px solid purple;
+	padding-bottom: 1rem;
 }
 
 /*=============== REVIEW PAGE ===============*/

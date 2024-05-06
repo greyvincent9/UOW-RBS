@@ -36,25 +36,6 @@ if (currentPage === "/viewRoom.html") {
 /*=============== PAGE INDICATIOR ===============*/
 
 /*=============== SELECT ROOM ===============*/
-/// Sort By Button Function
-document.addEventListener("click", (e) => {
-	const isDropdownButton = e.target.matches("[data-dropdown-button]");
-
-	if (!isDropdownButton && e.target.closest("[data-dropdown]") != null)
-		return;
-
-	let currentDropdown;
-	if (isDropdownButton) {
-		currentDropdown = e.target.closest("[data-dropdown]");
-		currentDropdown.classList.toggle("active");
-	}
-
-	document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
-		if (dropdown === currentDropdown) return;
-		dropdown.classList.remove("active");
-	});
-});
-
 // Load JSON
 var http = new XMLHttpRequest();
 http.open("GET", "room.json", true);
@@ -69,9 +50,6 @@ http.onload = function () {
 
 		// empty var to add incoming data
 		var output = "";
-		console.log(room);
-
-		display(room);
 
 		// Home Location Select
 		addSelectOption(room);
@@ -90,12 +68,12 @@ function addSelectOption(room) {
 			uniqueLocations.push(roomLocation);
 		}
 	}
-	console.log(uniqueLocations);
+
 	uniqueLocations.sort();
-	console.log(uniqueLocations);
+
 	for (let j = 0; j < uniqueLocations.length; j++) {
 		var locationE = document.createElement("option");
-		console.log("hello");
+
 		locationE.innerText = uniqueLocations[j];
 		locationSelect.appendChild(locationE);
 	}
@@ -107,8 +85,9 @@ function addSelectOption(room) {
 const roomCardTemplate = document.querySelector("#roomCardTemplate");
 const roomPageContainer = document.querySelector("#viewRoomPageContainer");
 const date = new Date();
-const formattedD = date.toISOString().split("T")[0];
+const formattedDateISO = date.toISOString().split("T")[0];
 
+// Fetch JSON and update viewRoom.html with data
 fetch("./room.json")
 	.then((res) => res.json())
 	.then((data) => {
@@ -128,112 +107,77 @@ fetch("./room.json")
 			roomCapacity.textContent = room.capacity;
 			roomPrice.textContent = room.price + ".00";
 
-			var timings = Object.keys(room.availability[formattedD]);
-			console.log("this is: " + timings);
+			var timings = Object.keys(room.availability[formattedDateISO]);
+
 			const roomDescriptionThirdCol = roomCard.querySelector(
 				".roomDescriptionThirdCol"
 			);
 
+			// Need a function to check available time with current date and time
+			// if current time has past available time, don't show invalid time slots
+			const availableTime = [];
 			timings.forEach((timing) => {
-				if (!timing.booked) {
-					/* 
-					const clonedButton = roomCard.querySelector(".timeSlot");
+				slot = room.availability[formattedDateISO][timing];
+				// Extract the current hours and minutes
+				let currentHours = date.getHours();
+				currentHours = 0;
+				// Get time slot hour
+				let timeSlotHour = timing.split(":", 1);
 
-					// // Set the button text to the timing
-					// clonedButton.textContent = timing;
-					clonedButton.textContent = timing;
-					// Append the cloned button to the roomDescriptionThirdCol element
-					roomDescriptionThirdCol.appendChild(clonedButton);*/
-					const button = document.createElement("button");
+				// Compare the hours
+				if (timeSlotHour < 8) {
+					timeSlotHour = parseInt(timeSlotHour) + 12;
+					// Check if time slot is later than current
+					// If time slot is later and room is not booked, create button
+					if (timeSlotHour > currentHours && !slot.booked) {
+						availableTime.push(timing);
+					}
+				} else if (timeSlotHour == 12) {
+					if (timeSlotHour > currentHours && !slot.booked) {
+						availableTime.push(timing);
+					}
+				} else {
+					if (timeSlotHour > currentHours && !slot.booked) {
+						availableTime.push(timing);
+					}
 				}
 			});
 
+			availableTime.forEach((time) => {
+				if (time.split(":", 1) < 7 || time === 12) {
+					var timeSlotButton = document.createElement("button");
+					timeSlotButton.className = "timeSlot";
+					timeSlotButton.textContent = time + " PM";
+					roomDescriptionThirdCol.appendChild(timeSlotButton);
+				} else {
+					var timeSlotButton = document.createElement("button");
+					timeSlotButton.className = "timeSlot";
+					timeSlotButton.textContent = time + " AM";
+					roomDescriptionThirdCol.appendChild(timeSlotButton);
+				}
+			});
+
+			if (availableTime.length == 0) {
+				var noAvailableSlot = document.createElement("span");
+				noAvailableSlot.textContent = "No available slot";
+				roomDescriptionThirdCol.style = null;
+				noAvailableSlot.style.width = "200px";
+				roomDescriptionThirdCol.appendChild(noAvailableSlot);
+			}
+
 			roomPageContainer.append(roomCard);
-			console.log(img);
 		});
 	});
 
-function display(room) {
-	var totalPrice = 0;
+// Select time slot
+/// Sort By Button Function
+const timeSlotButtons = document.getElementsByClassName("timeSlot");
+console.log("helloworld");
 
-	var searchResultColDiv = document.getElementById("searchResultColumn");
-
-	// for each room, display
-
-	for (let i = 0; i < room.length; i++) {
-		// for each rom create a div
-		var roomDiv = document.createElement("div");
-		roomDiv.className = "room";
-
-		var img = new Image();
-		img.src = room[i].image;
-		img.alt = "room image";
-		roomDiv.appendChild(img);
-
-		var roomDescriptionSecondColDiv = document.createElement("div");
-		roomDescriptionSecondColDiv.className = "roomDescriptionSecondCol";
-
-		// Room Name
-		var roomName = document.createElement("h1");
-		roomName.textContent = room[i].name;
-		roomDescriptionSecondColDiv.appendChild(roomName);
-
-		// Room Description Container
-		var roomDescriptionContainer = document.createElement("div");
-		roomDescriptionContainer.id = "roomDescriptionContainer";
-
-		// Location
-		var roomDescriptionDiv = document.createElement("div");
-		roomDescriptionDiv.className = "roomDescription";
-		var locationIcon = document.createElement("span");
-		locationIcon.className = "material-icons";
-		locationIcon.textContent = " location_on ";
-
-		roomDescriptionDiv.appendChild(locationIcon);
-
-		var locationText = document.createElement("span");
-		locationText.innerHTML = "Location: " + room[i].location;
-
-		roomDescriptionDiv.appendChild(locationText);
-
-		roomDescriptionContainer.appendChild(roomDescriptionDiv);
-
-		// Capacity
-		roomDescriptionDiv = document.createElement("div");
-		roomDescriptionDiv.className = "roomDescription";
-		var capacityIcon = document.createElement("span");
-		capacityIcon.className = "material-icons";
-		capacityIcon.textContent = " group ";
-
-		roomDescriptionDiv.appendChild(capacityIcon);
-
-		var capacityText = document.createElement("span");
-		capacityText.innerHTML =
-			"Capacity: Up to " + room[i].capacity + " people";
-
-		roomDescriptionDiv.appendChild(capacityText);
-
-		roomDescriptionContainer.appendChild(roomDescriptionDiv);
-
-		// Cost
-		roomDescriptionDiv = document.createElement("div");
-		roomDescriptionDiv.className = "roomDescription";
-		var priceIcon = document.createElement("span");
-		priceIcon.className = "material-icons";
-		priceIcon.textContent = " attach_money ";
-
-		roomDescriptionDiv.appendChild(priceIcon);
-
-		var priceText = document.createElement("span");
-		priceText.innerHTML = "Price: $" + room[i].price + "/hour";
-
-		roomDescriptionDiv.appendChild(priceText);
-
-		roomDescriptionContainer.appendChild(roomDescriptionDiv);
-		roomDescriptionSecondColDiv.appendChild(roomDescriptionContainer);
-
-		roomDiv.appendChild(roomDescriptionSecondColDiv);
-
-		searchResultColDiv.appendChild(roomDiv);
-	}
-}
+timeSlotButtons.forEach((btn) => {
+	btn.addEventListener("click", (e) => {
+		console.log("hello");
+		// timeSlotButtons.forEach((f) => f.classList.remove("active"));
+		// e.target.classList.toggle("active");
+	});
+});
