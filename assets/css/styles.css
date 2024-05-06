@@ -9,6 +9,7 @@
 	--text-color: rgb(10, 12, 10);
 	--background-color: rgb(243, 247, 243);
 	--primary-color: rgb(101, 176, 98);
+	--primary-hover-color: rgb(84, 147, 82);
 	--primary-a1-color: rgba(101, 176, 98, 0.2);
 	--secondary-color: rgb(164, 219, 162);
 	--secondary-a1-color: rgb(164, 219, 162, 0.2);
@@ -71,17 +72,6 @@
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
-
-	/* Support for all WebKit browsers. */
-	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
-	text-rendering: optimizeLegibility;
-
-	/* Support for Firefox. */
-	-moz-osx-font-smoothing: grayscale;
-
-	/* Support for IE. */
-	font-feature-settings: "liga";
 }
 
 *,
@@ -185,7 +175,7 @@ nav {
 
 .nav-list {
 	display: inline-flex;
-	padding: 0, 0.5em;
+
 	align-items: center;
 }
 
@@ -242,8 +232,9 @@ button {
 	font-weight: var(--fw-semi-bold);
 }
 
-button:hover {
-	background-color: rgb(84, 147, 82);
+button:hover,
+.active {
+	background-color: var(--primary-hover-color);
 	cursor: pointer;
 	transition: background-color 150ms ease-in;
 }
@@ -443,12 +434,6 @@ select {
 	text-align: center;
 }
 
-.active {
-	color: white;
-	border-bottom: 5px solid purple;
-	padding-bottom: 1rem;
-}
-
 /*=============== REVIEW PAGE ===============*/
 #reviewPageContainer {
 	display: flex;
@@ -549,7 +534,7 @@ select {
 }
 
 #paymentDetail label {
-	margin-bottom: 0.25rem 0;
+	margin-bottom: 0.25rem;
 }
 
 #paymentDetail input {

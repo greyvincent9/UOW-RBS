@@ -18,6 +18,18 @@
 				"03:00": { "booked": true },
 				"04:00": { "booked": true },
 				"05:00": { "booked": true }
+			},
+			"2024-05-07": {
+				"08:00": { "booked": false },
+				"09:00": { "booked": false },
+				"10:00": { "booked": false },
+				"11:00": { "booked": false },
+				"12:00": { "booked": false },
+				"01:00": { "booked": false },
+				"02:00": { "booked": false },
+				"03:00": { "booked": false },
+				"04:00": { "booked": false },
+				"05:00": { "booked": false }
 			}
 		}
 	},
@@ -30,6 +42,18 @@
 		"price": 2,
 		"availability": {
 			"2024-05-06": {
+				"08:00": { "booked": false },
+				"09:00": { "booked": false },
+				"10:00": { "booked": false },
+				"11:00": { "booked": false },
+				"12:00": { "booked": false },
+				"01:00": { "booked": false },
+				"02:00": { "booked": false },
+				"03:00": { "booked": false },
+				"04:00": { "booked": false },
+				"05:00": { "booked": false }
+			},
+			"2024-05-07": {
 				"08:00": { "booked": false },
 				"09:00": { "booked": false },
 				"10:00": { "booked": false },
@@ -62,11 +86,23 @@
 				"03:00": { "booked": true },
 				"04:00": { "booked": true },
 				"05:00": { "booked": true }
+			},
+			"2024-05-07": {
+				"08:00": { "booked": false },
+				"09:00": { "booked": false },
+				"10:00": { "booked": false },
+				"11:00": { "booked": false },
+				"12:00": { "booked": false },
+				"01:00": { "booked": false },
+				"02:00": { "booked": false },
+				"03:00": { "booked": false },
+				"04:00": { "booked": false },
+				"05:00": { "booked": false }
 			}
 		}
 	},
 	{
-		"id": 3,
+		"id": 4,
 		"name": "Room 103",
 		"image": "/assets/img/images.jpg",
 		"location": "UOW Campus - Library Level 1",

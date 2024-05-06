@@ -26,9 +26,6 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
 		/>
 
-		<!--=============== SWIPER CSS ===============-->
-		<link rel="stylesheet" href="" />
-
 		<!--=============== CSS ===============-->
 		<link rel="stylesheet" href="assets/css/styles.css" />
 
@@ -66,11 +63,19 @@
 			<div class="search-field" id="search-location">
 				<select id="search-location-input" placeholder="LOCATION">
 					<option value="" disabled selected>LOCATION</option>
-					<!-- LOAD DATA FROM JSON -->
+					<option value="UOW Campus - Library Level 1">
+						UOW Campus - Library Level 1
+					</option>
+					<option value="UOW Campus - Library Level 2">
+						UOW Campus - Library Level 2
+					</option>
+					<option value="UOW Campus - Block B Level 1">
+						UOW Campus - Block B Level 1
+					</option>
 				</select>
 			</div>
 			<div class="search-field" id="search-date" onclick="">
-				<!-- Make a function to display current date -->
+				<!-- Make a function to display selected date -->
 				<!-- <span id="search-date-text">DATE</span> -->
 				<input type="date" name="searchDate" id="searchDate" />
 			</div>
@@ -79,13 +84,13 @@
 					<option value="" selected disabled>CAPACITY</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
-
 					<option value="4">4</option>
-
 					<option value="8">8</option>
 				</select>
 			</div>
-			<button id="search">Search</button>
+			<button id="search" class="searchButton" onclick="searchRoom()">
+				Search
+			</button>
 		</div>
 		<div class="container" id="pageIndicator">
 			<div class="pageIndicator" id="roomPageIndicator">
@@ -101,10 +106,14 @@
 				<p class="pageName">PAYMENT</p>
 			</div>
 		</div>
-		<div class="container" id="viewRoomPageContainer"></div>
-		<template id="roomCardTemplate">
-			<div class="roomContainer">
-				<div class="room">
+		<div
+			class="container"
+			id="viewRoomPageContainer"
+			data-view-room-container
+		></div>
+		<template id="roomCardTemplate" data-room-template>
+			<div class="roomContainer" data-room-container>
+				<div class="room" data-room>
 					<img />
 					<div class="roomDescriptionSecondCol">
 						<h1 class="roomName"></h1>
