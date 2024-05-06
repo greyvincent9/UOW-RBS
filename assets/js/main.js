@@ -3,7 +3,7 @@
 // Set Date
 var currentPage = window.location.pathname;
 
-if (currentPage === "/index.html" && currentPage === "/viewRoom.html") {
+if (currentPage === "/index.html" || currentPage === "/viewRoom.html") {
 	const datePicker = document.getElementById("searchDate");
 	var today = new Date();
 	var formattedDate = today.toISOString().split("T")[0];
@@ -71,7 +71,7 @@ http.onload = function () {
 		var output = "";
 		console.log(room);
 
-		// display(room);
+		display(room);
 
 		// Home Location Select
 		addSelectOption(room);
@@ -104,9 +104,58 @@ function addSelectOption(room) {
 // }
 
 // Set Location Options
+const roomCardTemplate = document.querySelector("#roomCardTemplate");
+const roomPageContainer = document.querySelector("#viewRoomPageContainer");
+const date = new Date();
+const formattedD = date.toISOString().split("T")[0];
+
+fetch("./room.json")
+	.then((res) => res.json())
+	.then((data) => {
+		data.forEach((room) => {
+			const roomCard = roomCardTemplate.content.cloneNode(true);
+			const img = roomCard.querySelector("img");
+			const roomName = roomCard.querySelector(".roomName");
+			const roomCapacity = roomCard.querySelector(".roomCapacity");
+			const roomLocation = roomCard.querySelector(".roomLocation");
+			const roomPrice = roomCard.querySelector(".roomPrice");
+			const timeSlot = roomCard.querySelector(".timeSlot");
+
+			img.src = room.image;
+			img.alt = "room image";
+			roomName.textContent = room.name;
+			roomLocation.textContent = room.location;
+			roomCapacity.textContent = room.capacity;
+			roomPrice.textContent = room.price + ".00";
+
+			var timings = Object.keys(room.availability[formattedD]);
+			console.log("this is: " + timings);
+			const roomDescriptionThirdCol = roomCard.querySelector(
+				".roomDescriptionThirdCol"
+			);
+
+			timings.forEach((timing) => {
+				if (!timing.booked) {
+					/* 
+					const clonedButton = roomCard.querySelector(".timeSlot");
+
+					// // Set the button text to the timing
+					// clonedButton.textContent = timing;
+					clonedButton.textContent = timing;
+					// Append the cloned button to the roomDescriptionThirdCol element
+					roomDescriptionThirdCol.appendChild(clonedButton);*/
+					const button = document.createElement("button");
+				}
+			});
+
+			roomPageContainer.append(roomCard);
+			console.log(img);
+		});
+	});
 
 function display(room) {
 	var totalPrice = 0;
+
 	var searchResultColDiv = document.getElementById("searchResultColumn");
 
 	// for each room, display

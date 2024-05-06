@@ -14,6 +14,14 @@
 			"2024-05-05": {
 				"09:00": { "booked": false },
 				"10:00": { "booked": false }
+			},
+			"2024-05-06": {
+				"09:00": { "booked": false },
+				"10:00": { "booked": false },
+				"11:00": { "booked": false },
+				"12:00": { "booked": false },
+				"13:00": { "booked": false },
+				"14:00": { "booked": false }
 			}
 		}
 	},
