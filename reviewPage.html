@@ -1,149 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!--=============== FONTS ===============-->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
-			rel="stylesheet"
-		/>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!--=============== ICONS ===============-->
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-		/>
-		<link
-			href="https://fonts.googleapis.com/icon?family=Material+Icons"
-			rel="stylesheet"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
-		/>
+	<!--=============== FONTS ===============-->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
+		rel="stylesheet" />
 
-		<!--=============== SWIPER CSS ===============-->
-		<link rel="stylesheet" href="" />
+	<!--=============== ICONS ===============-->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
 
-		<!--=============== CSS ===============-->
-		<link rel="stylesheet" href="assets/css/styles.css" />
+	<!--=============== SWIPER CSS ===============-->
+	<link rel="stylesheet" href="" />
 
-		<title>UOW Room Booking System</title>
-	</head>
+	<!--=============== CSS ===============-->
+	<link rel="stylesheet" href="assets/css/styles.css" />
 
-	<body>
-		<header class="header" id="header">
-			<div class="container">
-				<nav>
-					<div class="nav-logo">
-						<a href="index.html"
-							><img
-								src="assets/img/logo-uow.png"
-								alt="logo"
-								style="height: 32px"
-						/></a>
-					</div>
+	<title>UOW Room Booking System</title>
+</head>
 
-					<ul role="list" class="nav-list">
-						<li><a href="viewRoom.html">Book Now</a></li>
-						<li><a href="viewBooking.html">View Booking</a></li>
-						<li><a href="">Contact Us</a></li>
-						<li><a href="">Cart</a></li>
-						<li>
-							<button href="" id="login-button">Login</button>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+<body>
+	<header class="header" id="header">
+		<div class="container">
+			<nav>
+				<div class="nav-logo">
+					<a href="index.html"><img src="assets/img/logo-uow.png" alt="logo" style="height: 32px" /></a>
+				</div>
 
-		<!--==================== MAIN ====================-->
-		<div class="container" id="pageIndicator">
-			<div class="pageIndicator" id="roomPageIndicator">
-				<div class="pageNumber">1</div>
-				<p class="pageName">ROOM</p>
-			</div>
-			<div class="pageIndicator" id="reviewPageIndicator">
-				<div class="pageNumber">2</div>
-				<p class="pageName">REVIEW</p>
-			</div>
-			<div class="pageIndicator" id="paymentPageIndicator">
-				<div class="pageNumber">3</div>
-				<p class="pageName">PAYMENT</p>
-			</div>
+				<ul role="list" class="nav-list">
+					<li><a href="index.html">Book Now</a></li>
+					<li><a href="viewBooking.html">View Booking</a></li>
+					<li><a href="">Contact Us</a></li>
+					<li><a href="reviewPage.html">Cart</a></li>
+					<li>
+						<button href="" id="login-button">Login</button>
+					</li>
+				</ul>
+			</nav>
 		</div>
+	</header>
 
-		<div class="container" class="pageContainer" id="reviewPageContainer">
-			<div id="selectedRoomContainer">
-				<div class="selectedRoom">
-					<img
-						src="assets/img/images.jpg"
-						alt="room image"
-						width="133px"
-						height="133px"
-						style="border-radius: 10px"
-					/>
-					<div class="roomDescriptionSecondCol">
-						<h1>Meeting Room A</h1>
-						<div class="roomDescription">
-							<span class="material-icons"> location_on </span>
-							<span>Location: </span>
-							<span>HQ SIM, Block A</span>
-						</div>
-						<div class="roomDescription">
-							<span class="material-icons"> group </span>
-							<span>Capacity: </span>
-							<span>Up to 4 people</span>
-						</div>
-						<div id="bookingTimeDescription">
-							<div id="startTime">
-								<h1>Start</h1>
-								<h1>12:00 PM</h1>
-							</div>
-							<span class="material-symbols-outlined">
-								arrow_forward
-							</span>
-							<div id="endTime">
-								<h1>End</h1>
-								<h1>01:00 PM</h1>
-							</div>
-						</div>
+	<!--==================== MAIN ====================-->
+	<div class="container" id="pageIndicator">
+		<div class="pageIndicator" id="roomPageIndicator">
+			<div class="pageNumber">1</div>
+			<p class="pageName">ROOM</p>
+		</div>
+		<div class="pageIndicator" id="reviewPageIndicator">
+			<div class="pageNumber">2</div>
+			<p class="pageName">REVIEW</p>
+		</div>
+		<div class="pageIndicator" id="paymentPageIndicator">
+			<div class="pageNumber">3</div>
+			<p class="pageName">PAYMENT</p>
+		</div>
+	</div>
+
+	<div class="container" class="pageContainer" id="reviewPageContainer">
+		<!-- <div id="selectedRoomContainer">
+			<div class="selectedRoom">
+				<img src="assets/img/images.jpg" alt="room image" width="133px" height="133px"
+					style="border-radius: 10px" />
+				<div class="roomDescriptionSecondCol">
+					<h1>Meeting Room A</h1>
+					<div class="roomDescription">
+						<span class="material-icons"> location_on </span>
+						<span>Location: </span>
+						<span>HQ SIM, Block A</span>
 					</div>
-					<div class="roomDescriptionThirdCol">
-						<h1 class="roomPrice">$2.00</h1>
-						<button>Modify</button>
+					<div class="roomDescription">
+						<span class="material-icons"> group </span>
+						<span>Capacity: </span>
+						<span>Up to 4 people</span>
+					</div>
+					<div id="bookingTimeDescription">
+						<div id="startTime">
+							<h1>Start</h1>
+							<h1>12:00 PM</h1>
+						</div>
+						<span class="material-symbols-outlined">
+							arrow_forward
+						</span>
+						<div id="endTime">
+							<h1>End</h1>
+							<h1>01:00 PM</h1>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div>
-				<div class="orderSummaryCard">
-					<div class="orderSummaryInfo" id="reviewBookingDuration">
-						<h1>Duration:</h1>
-						<span>1 hour</span>
-					</div>
-					<div class="orderSummaryInfo" id="reviewBookingSubtotal">
-						<h1>Subtotal:</h1>
-						<span>$2.00</span>
-					</div>
-					<div style="font-size: 10px; color: rgba(0, 0, 0, 0.4)">
-						Promo Code to be applied in payment.
-					</div>
-					<div class="orderSummaryInfo" id="reviewBookingTotal">
-						<h1>Total:</h1>
-						<span id="reviewTotalAmount">$2.00</span>
-					</div>
-					<button id="checkoutButton">Checkout</button>
+				<div class="roomDescriptionThirdCol">
+					<h1 class="roomPrice">$2.00</h1>
+					<button>Modify</button>
 				</div>
 			</div>
-		</div>
-		<!--=============== SWIPER JS ===============-->
-		<script src=""></script>
+		</div> -->
+		<div id="cartContainer">
+			<div>View Cart</div>
 
-		<!--=============== MAIN JS ===============-->
-		<script src="assets/js/main.js" defer></script>
-	</body>
+
+		</div>
+		<div>
+			<div class="orderSummaryCard">
+				<div class="orderSummaryInfo" id="reviewBookingDuration">
+					<h1>Duration:</h1>
+					<span>1 hour</span>
+				</div>
+				<div class="orderSummaryInfo" id="reviewBookingSubtotal">
+					<h1>Subtotal:</h1>
+					<span>$2.00</span>
+				</div>
+				<div style="font-size: 10px; color: rgba(0, 0, 0, 0.4)">
+					Promo Code to be applied in payment.
+				</div>
+				<div class="orderSummaryInfo" id="reviewBookingTotal">
+					<h1>Total:</h1>
+					<span id="reviewTotalAmount">$2.00</span>
+				</div>
+				<button id="checkoutButton">Checkout</button>
+			</div>
+		</div>
+	</div>
+	<!--=============== SWIPER JS ===============-->
+	<script src=""></script>
+
+	<!--=============== MAIN JS ===============-->
+	<script src="assets/js/main.js" defer></script>
+</body>
+
 </html>

@@ -1,150 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!--=============== FONTS ===============-->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
-			rel="stylesheet"
-		/>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!--=============== ICONS ===============-->
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-		/>
-		<link
-			href="https://fonts.googleapis.com/icon?family=Material+Icons"
-			rel="stylesheet"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
-		/>
+	<!--=============== FONTS ===============-->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
+		rel="stylesheet" />
 
-		<!--=============== CSS ===============-->
-		<link rel="stylesheet" href="assets/css/styles.css" />
+	<!--=============== ICONS ===============-->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
 
-		<title>UOW Room Booking System</title>
-	</head>
+	<!--=============== CSS ===============-->
+	<link rel="stylesheet" href="assets/css/styles.css" />
 
-	<body>
-		<header class="header" id="header">
-			<div class="container">
-				<nav>
-					<div class="nav-logo">
-						<a href="index.html"
-							><img
-								src="assets/img/logo-uow.png"
-								alt="logo"
-								style="height: 32px"
-						/></a>
+	<title>UOW Room Booking System</title>
+</head>
+
+<body>
+	<header class="header" id="header">
+		<div class="container">
+			<nav>
+				<div class="nav-logo">
+					<a href="index.html"><img src="assets/img/logo-uow.png" alt="logo" style="height: 32px" /></a>
+				</div>
+
+				<ul role="list" class="nav-list">
+					<li><a href="index.html">Book Now</a></li>
+					<li><a href="viewBooking.html">View Booking</a></li>
+					<li><a href="">Contact Us</a></li>
+					<li><a href="reviewPage.html">Cart</a></li>
+					<li>
+						<button href="" id="login-button">Login</button>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<!--==================== MAIN ====================-->
+	<div class="container" id="searchBar">
+		<div class="search-field" id="search-location">
+			<select id="search-location-input" placeholder="LOCATION">
+				<option value="" disabled selected>LOCATION</option>
+				<option value="UOW Campus - Library Level 1">
+					UOW Campus - Library Level 1
+				</option>
+				<option value="UOW Campus - Library Level 2">
+					UOW Campus - Library Level 2
+				</option>
+				<option value="UOW Campus - Block B Level 1">
+					UOW Campus - Block B Level 1
+				</option>
+			</select>
+		</div>
+		<div class="search-field" id="search-date" onclick="">
+			<!-- Make a function to display selected date -->
+			<!-- <span id="search-date-text">DATE</span> -->
+			<input type="date" name="searchDate" id="searchDate" />
+		</div>
+		<div class="search-field" id="search-capacity">
+			<select name="search-capacity" id="search-capacity-input">
+				<option value="" selected disabled>CAPACITY</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="4">4</option>
+				<option value="8">8</option>
+			</select>
+		</div>
+		<button id="search" class="searchButton" onclick="searchRoom()">
+			Search
+		</button>
+	</div>
+	<div class="container" id="pageIndicator">
+		<div class="pageIndicator" id="roomPageIndicator">
+			<div class="pageNumber">1</div>
+			<p class="pageName">ROOM</p>
+		</div>
+		<div class="pageIndicator" id="reviewPageIndicator">
+			<div class="pageNumber">2</div>
+			<p class="pageName">REVIEW</p>
+		</div>
+		<div class="pageIndicator" id="paymentPageIndicator">
+			<div class="pageNumber">3</div>
+			<p class="pageName">PAYMENT</p>
+		</div>
+	</div>
+	<div class="container" id="viewRoomPageContainer" data-view-room-container>
+		<button onclick="addToCart()">add to cart</button>
+	</div>
+	<template id="roomCardTemplate" data-room-card-template>
+		<div class="roomContainer" data-room-container>
+			<div class="room" data-room>
+				<img />
+				<div class="roomDescriptionSecondCol">
+					<h1 class="roomName"></h1>
+					<div class="roomDescription">
+						<span class="material-icons"> location_on </span>
+						<span>Location: <span class="roomLocation"></span></span>
 					</div>
-
-					<ul role="list" class="nav-list">
-						<li><a href="viewRoom.html">Book Now</a></li>
-						<li><a href="viewBooking.html">View Booking</a></li>
-						<li><a href="">Contact Us</a></li>
-						<li><a href="">Cart</a></li>
-						<li>
-							<button href="" id="login-button">Login</button>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-
-		<!--==================== MAIN ====================-->
-		<div class="container" id="searchBar">
-			<div class="search-field" id="search-location">
-				<select id="search-location-input" placeholder="LOCATION">
-					<option value="" disabled selected>LOCATION</option>
-					<option value="UOW Campus - Library Level 1">
-						UOW Campus - Library Level 1
-					</option>
-					<option value="UOW Campus - Library Level 2">
-						UOW Campus - Library Level 2
-					</option>
-					<option value="UOW Campus - Block B Level 1">
-						UOW Campus - Block B Level 1
-					</option>
-				</select>
-			</div>
-			<div class="search-field" id="search-date" onclick="">
-				<!-- Make a function to display selected date -->
-				<!-- <span id="search-date-text">DATE</span> -->
-				<input type="date" name="searchDate" id="searchDate" />
-			</div>
-			<div class="search-field" id="search-capacity">
-				<select name="search-capacity" id="search-capacity-input">
-					<option value="" selected disabled>CAPACITY</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="4">4</option>
-					<option value="8">8</option>
-				</select>
-			</div>
-			<button id="search" class="searchButton" onclick="searchRoom()">
-				Search
-			</button>
-		</div>
-		<div class="container" id="pageIndicator">
-			<div class="pageIndicator" id="roomPageIndicator">
-				<div class="pageNumber">1</div>
-				<p class="pageName">ROOM</p>
-			</div>
-			<div class="pageIndicator" id="reviewPageIndicator">
-				<div class="pageNumber">2</div>
-				<p class="pageName">REVIEW</p>
-			</div>
-			<div class="pageIndicator" id="paymentPageIndicator">
-				<div class="pageNumber">3</div>
-				<p class="pageName">PAYMENT</p>
-			</div>
-		</div>
-		<div
-			class="container"
-			id="viewRoomPageContainer"
-			data-view-room-container
-		>
-			<button onclick="addToCart()">add to cart</button>
-		</div>
-		<template id="roomCardTemplate" data-room-card-template>
-			<div class="roomContainer" data-room-container>
-				<div class="room" data-room>
-					<img />
-					<div class="roomDescriptionSecondCol">
-						<h1 class="roomName"></h1>
-						<div class="roomDescription">
-							<span class="material-icons"> location_on </span>
-							<span
-								>Location: <span class="roomLocation"></span
-							></span>
-						</div>
-						<div class="roomDescription">
-							<span class="material-icons"> group </span>
-							<span>Capacity: </span>
-							<span
-								>Up to
-								<span class="roomCapacity"></span>people</span
-							>
-						</div>
-						<div class="roomDescription">
-							<span class="material-icons"> attach_money </span>
-							<span>Price: $<span class="roomPrice"></span></span>
-						</div>
+					<div class="roomDescription">
+						<span class="material-icons"> group </span>
+						<span>Capacity: </span>
+						<span>Up to
+							<span class="roomCapacity"></span>people</span>
 					</div>
-					<div class="roomDescriptionThirdCol">
-						<!-- <button class="timeSlot"></button> -->
+					<div class="roomDescription">
+						<span class="material-icons"> attach_money </span>
+						<span>Price: $<span class="roomPrice"></span></span>
 					</div>
 				</div>
+				<div class="roomDescriptionThirdCol">
+					<!-- <button class="timeSlot"></button> -->
+				</div>
 			</div>
-		</template>
-		<!--=============== MAIN JS ===============-->
-		<script src="assets/js/main.js" defer></script>
-	</body>
+		</div>
+	</template>
+	<!--=============== MAIN JS ===============-->
+	<script src="assets/js/main.js" defer></script>
+</body>
+
 </html>

@@ -1,122 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!--=============== FONTS ===============-->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
-			rel="stylesheet"
-		/>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!--=============== ICONS ===============-->
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
-		/>
+	<!--=============== FONTS ===============-->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
+		rel="stylesheet" />
 
-		<!--=============== SWIPER CSS ===============-->
-		<link rel="stylesheet" href="" />
+	<!--=============== ICONS ===============-->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
 
-		<!--=============== CSS ===============-->
-		<link rel="stylesheet" href="assets/css/styles.css" />
+	<!--=============== SWIPER CSS ===============-->
+	<link rel="stylesheet" href="" />
 
-		<title>UOW Room Booking System</title>
-	</head>
+	<!--=============== CSS ===============-->
+	<link rel="stylesheet" href="assets/css/styles.css" />
 
-	<body>
-		<!--==================== HEADER ====================-->
-		<header class="header" id="header">
-			<div class="container">
-				<nav>
-					<div class="nav-logo">
-						<a href="index.html"
-							><img
-								src="assets/img/logo-uow.png"
-								alt="logo"
-								style="height: 32px"
-						/></a>
-					</div>
+	<title>UOW Room Booking System</title>
+</head>
 
-					<ul role="list" class="nav-list">
-						<li><a href="viewRoom.html">Book Now</a></li>
-						<li><a href="viewBooking.html">View Booking</a></li>
-						<li><a href="">Contact Us</a></li>
-						<li><a href="">Cart</a></li>
-						<li>
-							<button
-								href=""
-								id="login-button"
-								onclick="searchRoom()"
-							>
-								Login
-							</button>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-
-		<!--==================== MAIN ====================-->
-		<main class="main">
-			<!--==================== HOME ====================-->
-			<img src="/assets/img/meeting-room.png" alt="meeting-room" />
-
-			<div class="container" id="home-search-form">
-				<h1>Find a space that works for you!</h1>
-
-				<div id="search-row-one">
-					<div class="search-field" id="search-location">
-						<select
-							id="search-location-input"
-							placeholder="LOCATION"
-						>
-							<option value="" disabled selected>LOCATION</option>
-							<option value="UOW Campus - Library Level 1">
-								UOW Campus - Library Level 1
-							</option>
-							<option value="UOW Campus - Library Level 2">
-								UOW Campus - Library Level 2
-							</option>
-							<option value="UOW Campus - Block B Level 1">
-								UOW Campus - Block B Level 1
-							</option>
-						</select>
-					</div>
-					<div class="search-field" id="search-date" onclick="">
-						<!-- Make a function to display current date -->
-						<!-- <span id="search-date-text">DATE</span> -->
-						<input type="date" name="searchDate" id="searchDate" />
-					</div>
-					<div class="search-field" id="search-capacity">
-						<select
-							name="search-capacity"
-							id="search-capacity-input"
-						>
-							<option value="" selected disabled>CAPACITY</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="4">4</option>
-							<option value="8">8</option>
-						</select>
-					</div>
+<body>
+	<!--==================== HEADER ====================-->
+	<header class="header" id="header">
+		<div class="container">
+			<nav>
+				<div class="nav-logo">
+					<a href="index.html"><img src="assets/img/logo-uow.png" alt="logo" style="height: 32px" /></a>
 				</div>
-				<div id="search-row-two">
-					<button class="searchButton" id="search-submit">
-						Search
-					</button>
+
+				<ul role="list" class="nav-list">
+					<li><a href="index.html">Book Now</a></li>
+					<li><a href="viewBooking.html">View Booking</a></li>
+					<li><a href="">Contact Us</a></li>
+					<li><a href="">Cart</a></li>
+					<li>
+						<button href="" id="login-button" onclick="searchRoom()">
+							Login
+						</button>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<!--==================== MAIN ====================-->
+	<main class="main">
+		<!--==================== HOME ====================-->
+		<img src="/assets/img/meeting-room.png" alt="meeting-room" />
+
+		<div class="container" id="home-search-form">
+			<h1>Find a space that works for you!</h1>
+
+			<div id="search-row-one">
+				<div class="search-field" id="search-location">
+					<select id="search-location-input" placeholder="LOCATION">
+						<option value="" disabled selected>LOCATION</option>
+						<option value="UOW Campus - Library Level 1">
+							UOW Campus - Library Level 1
+						</option>
+						<option value="UOW Campus - Library Level 2">
+							UOW Campus - Library Level 2
+						</option>
+						<option value="UOW Campus - Block B Level 1">
+							UOW Campus - Block B Level 1
+						</option>
+					</select>
+				</div>
+				<div class="search-field" id="search-date" onclick="">
+					<!-- Make a function to display current date -->
+					<!-- <span id="search-date-text">DATE</span> -->
+					<input type="date" name="searchDate" id="searchDate" />
+				</div>
+				<div class="search-field" id="search-capacity">
+					<select name="search-capacity" id="search-capacity-input">
+						<option value="" selected disabled>CAPACITY</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="4">4</option>
+						<option value="8">8</option>
+					</select>
 				</div>
 			</div>
-		</main>
+			<div id="search-row-two">
+				<button class="searchButton" id="search-submit" onclick="searchRoom()">
+					Search
+				</button>
+			</div>
+		</div>
+	</main>
 
-		<!--=============== MAIN JS ===============-->
-		<script src="assets/js/main.js"></script>
-	</body>
+	<!--=============== MAIN JS ===============-->
+	<script src="assets/js/main.js"></script>
+</body>
+
 </html>
