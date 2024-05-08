@@ -56,8 +56,9 @@
 }
 
 /*=============== BASE ===============*/
+
 .material-symbols-outlined {
-	font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
+	font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 0, "opsz" 20;
 }
 
 .material-icons {
@@ -117,6 +118,7 @@ h3,
 h4,
 h5 {
 	font-weight: var(--fw-bold);
+	margin: 0;
 }
 
 img,
@@ -227,7 +229,7 @@ button {
 	background-color: var(--primary-color);
 	color: white;
 	border: none;
-	padding: 0.25rem 0.5em;
+	padding: 0.25rem 0.5rem;
 	border-radius: 5px;
 	font-weight: var(--fw-semi-bold);
 }
@@ -376,12 +378,13 @@ select {
 	/* display: flex; */
 	justify-content: space-between;
 	margin-top: 1rem;
+	padding-bottom: 80px;
+	position: relative;
 }
 
 .roomContainer {
 	margin: auto;
 	margin-top: 2rem;
-
 	width: 100%;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 20px;
@@ -423,7 +426,6 @@ select {
 	display: grid;
 	grid-template-columns: 100px 100px 100px 100px 100px;
 	column-gap: 2rem;
-
 	row-gap: 3rem;
 	flex-grow: 2;
 	padding-left: 1rem;
@@ -434,6 +436,21 @@ select {
 	text-align: center;
 }
 
+#continueContainer {
+	z-index: 99;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: var(--secondary-color);
+	align-content: center;
+	height: 64px;
+	display: none;
+}
+
+#continueContainer > div {
+	display: flex;
+	justify-content: end;
+}
 /*=============== REVIEW PAGE ===============*/
 #reviewPageContainer {
 	display: flex;
@@ -449,11 +466,49 @@ select {
 
 .selectedRoom {
 	display: flex;
-	flex-grow: 2;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 20px;
 	padding: 1rem;
 	column-gap: 1rem;
+}
+
+.selectedRoom img {
+	height: 140px;
+	width: 140px;
+}
+
+.selectedRoomDescriptionCol {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 2;
+	justify-content: space-between;
+}
+
+.selectedRoomDescription {
+	display: flex;
+}
+
+.selectedRoomDescription > span {
+	padding-right: 0.25rem;
+}
+
+.selectedRoomDescription > span.material-symbols-outlined {
+	font-size: 20px !important;
+}
+
+.selectedRoomThirdCol {
+	align-content: flex-end;
+}
+
+.bookingTimeDescription {
+	display: flex;
+	align-items: center;
+	/* justify-content: space-between; */
+	font-weight: 700;
+}
+.bookingTimeDescription h1 {
+	line-height: 0.7;
+	margin-top: 0.5rem;
 }
 
 .selectedRoom button {

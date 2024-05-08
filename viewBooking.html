@@ -1,95 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!--=============== FONTS ===============-->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
 
-	<!--=============== FONTS ===============-->
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@100..900&display=swap"
-		rel="stylesheet" />
+		<!--=============== ICONS ===============-->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
 
-	<!--=============== ICONS ===============-->
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css"
+		/>
 
-	<!--=============== SWIPER CSS ===============-->
-	<link rel="stylesheet" href="" />
+		<!--=============== SWIPER CSS ===============-->
+		<link rel="stylesheet" href="" />
 
-	<!--=============== CSS ===============-->
-	<link rel="stylesheet" href="assets/css/styles.css" />
+		<!--=============== CSS ===============-->
+		<link rel="stylesheet" href="assets/css/styles.css" />
 
-	<title>UOW Room Booking System</title>
-</head>
+		<title>UOW Room Booking System</title>
+	</head>
 
-<body>
-	<header class="header" id="header">
-		<div class="container">
-			<nav>
-				<div class="nav-logo">
-					<a href="index.html"><img src="assets/img/logo-uow.png" alt="logo" style="height: 32px" /></a>
-				</div>
-
-				<ul role="list" class="nav-list">
-					<li><a href="viewRoom.html">Book Now</a></li>
-					<li><a href="viewBooking.html">View Booking</a></li>
-					<li><a href="">Contact Us</a></li>
-					<li><a href="">Cart</a></li>
-					<li><button href="" id="login-button">Login</button></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-
-	<!--==================== MAIN ====================-->
-	<main>
-		<div class="container" id="viewBookingContainer">
-			<h1 class="pageHeading">Bookings</h1>
-
-			<div class="selectedRoom">
-				<img src="assets/img/images.jpg" alt="room image" width="133px" height="133px"
-					style="border-radius: 10px" />
-				<div class="roomDescriptionSecondCol">
-					<h1>Meeting Room A</h1>
-					<div class="roomDescription">
-						<span class="material-icons"> location_on </span>
-						<span>Location: </span>
-						<span>HQ SIM, Block A</span>
+	<body>
+		<header class="header" id="header">
+			<div class="container">
+				<nav>
+					<div class="nav-logo">
+						<a href="index.html"
+							><img
+								src="assets/img/logo-uow.png"
+								alt="logo"
+								style="height: 32px"
+						/></a>
 					</div>
-					<div class="roomDescription">
-						<span class="material-icons"> group </span>
-						<span>Capacity: </span>
-						<span>Up to 4 people</span>
-					</div>
-					<div id="bookingTimeDescription">
-						<div id="startTime">
-							<h1>Start</h1>
-							<h1>12:00 PM</h1>
+
+					<ul role="list" class="nav-list">
+						<li><a href="viewRoom.html">Book Now</a></li>
+						<li><a href="viewBooking.html">View Booking</a></li>
+						<li><a href="">Contact Us</a></li>
+						<li>
+							<button href="" id="login-button">Login</button>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!--==================== MAIN ====================-->
+		<main>
+			<div class="container" id="viewBookingContainer">
+				<h1 class="pageHeading">Bookings</h1>
+
+				<div class="selectedRoom">
+					<img
+						src="assets/img/images.jpg"
+						alt="room image"
+						width="133px"
+						height="133px"
+						style="border-radius: 10px"
+					/>
+					<div class="roomDescriptionSecondCol">
+						<h1>Meeting Room A</h1>
+						<div class="roomDescription">
+							<span class="material-icons"> location_on </span>
+							<span>Location: </span>
+							<span>HQ SIM, Block A</span>
 						</div>
-						<span class="material-symbols-outlined">
-							arrow_forward
-						</span>
-						<div id="endTime">
-							<h1>End</h1>
-							<h1>01:00 PM</h1>
+						<div class="roomDescription">
+							<span class="material-icons"> group </span>
+							<span>Capacity: </span>
+							<span>Up to 4 people</span>
+						</div>
+						<div id="bookingTimeDescription">
+							<div id="startTime">
+								<h1>Start</h1>
+								<h1>12:00 PM</h1>
+							</div>
+							<span class="material-symbols-outlined">
+								arrow_forward
+							</span>
+							<div id="endTime">
+								<h1>End</h1>
+								<h1>01:00 PM</h1>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="roomDescriptionThirdCol">
-					<button>Modify</button>
+					<div class="roomDescriptionThirdCol">
+						<button>Modify</button>
+					</div>
 				</div>
 			</div>
-		</div>
-	</main>
-	<!--=============== SWIPER JS ===============-->
-	<script src=""></script>
+		</main>
+		<!--=============== SWIPER JS ===============-->
+		<script src=""></script>
 
-	<!--=============== MAIN JS ===============-->
-	<script src="assets/js/main.js" defer></script>
-</body>
-
+		<!--=============== MAIN JS ===============-->
+		<script src="assets/js/main.js" defer></script>
+	</body>
 </html>
