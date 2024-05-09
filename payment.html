@@ -74,7 +74,8 @@
 			</div>
 
 			<div class="container" id="paymentPageContainer">
-				<form action="" onsubmit="validatePayment()">
+				<button type="button" onclick="validatePayment()">Com</button>
+				<form action="" onsubmit="return validatePayment()">
 					<div id="paymentDetailContainer">
 						<h1>Payment Details</h1>
 						<div id="paymentDetail">
@@ -178,8 +179,6 @@
 				</div>
 			</div>
 		</main>
-		<!--=============== SWIPER JS ===============-->
-		<script src=""></script>
 
 		<!--=============== MAIN JS ===============-->
 		<script src="assets/js/main.js" defer></script>

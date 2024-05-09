@@ -179,14 +179,6 @@ if (currentPage === "/index.html") {
 	searchLocationInput = document.getElementById("search-location-input");
 	searchCapacityInput = document.getElementById("search-capacity-input");
 
-	// if (selectedLocation.value !== "" || selectedLocation !== null) {
-	// 	searchLocationInput.value = selectedLocation;
-	// }
-
-	// if (selectedCapacity.value !== "" || selectedCapacity !== null) {
-	// 	selectedCapacity.value = selectedCapacity;
-	// }
-
 	datePicker.value = urlParams.get("date");
 
 	console.log(cart);
@@ -240,6 +232,8 @@ function searchRoom() {
 }
 
 /*=============== PAGE INDICATIOR ===============*/
+const roomPageIndicator = document.getElementById("roomPageIndicator");
+
 if (sessionStorage.getItem("cart") !== null) {
 	cart = JSON.parse(sessionStorage.getItem("cart"));
 	console.log("cart is not null", cart);
@@ -252,16 +246,17 @@ if (currentPage === "/viewRoom.html") {
 	console.log(currentPage);
 	document.getElementById("roomPageIndicator").style.opacity = "40%";
 	document.getElementById("paymentPageIndicator").style.opacity = "40%";
+	roomPageIndicator.addEventListener("click", (e) => {
+		window.location.href = "/viewRoom.html";
+	});
 } else if (currentPage === "/payment.html") {
 	console.log(currentPage);
 	document.getElementById("roomPageIndicator").style.opacity = "40%";
 	document.getElementById("reviewPageIndicator").style.opacity = "40%";
+	roomPageIndicator.addEventListener("click", (e) => {
+		window.location.href = "/viewRoom.html";
+	});
 }
-
-const roomPageIndicator = document.getElementById("roomPageIndicator");
-roomPageIndicator.addEventListener("click", (e) => {
-	window.location.href = "/viewRoom.html";
-});
 
 /*=============== SELECT ROOM PAGE ===============*/
 // Call this when viewRoom.html is loaded
@@ -438,14 +433,6 @@ function selectTime(id, time) {
 // Add to Cart Function
 function addToCart() {
 	const selectedRoomCopy = Object.assign({}, selectedRoom);
-	const roomId = selectedRoomCopy.roomId;
-	const roomImage = selectedRoomCopy.image;
-	const roomName = selectedRoomCopy.roomName;
-	const roomLocation = selectedRoomCopy.roomLocation;
-	const roomCapacity = selectedRoomCopy.roomCapacity;
-	const roomPrice = selectedRoomCopy.roomPrice;
-	const bookingTime = selectedRoomCopy.bookingTime;
-	const bookingDate = selectedRoomCopy.bookingDate;
 
 	// Use sessionStorage to store cart items
 	console.log("selectedroomcopy", selectedRoomCopy);
@@ -479,6 +466,7 @@ function addToCart() {
 							"SS before adding to session" + sessionStorage
 						);
 						console.log("Cart before adding to session" + cart);
+
 						sessionStorage.setItem("cart", JSON.stringify(cart));
 						console.log(
 							"session Storage",
@@ -496,6 +484,7 @@ function addToCart() {
 				// Push cart data into sessionStorage as string
 				console.log("SS before adding to session" + sessionStorage);
 				console.log("Cart before adding to session" + cart);
+
 				sessionStorage.setItem("cart", JSON.stringify(cart));
 				console.log("session Storage", sessionStorage.getItem("cart"));
 				console.log("cart in session storage", cart);
@@ -665,9 +654,10 @@ function removeFromCart(roomName, bookingDate, bookingTime) {
 /*=============== PAYMENT PAGE ===============*/
 if (currentPage === "/payment.html") {
 	subtotal = parseFloat(sessionStorage.getItem("subtotal"));
-	console.log(subtotal);
+	console.log("subtotal: " + subtotal);
 	var discount = 0;
 	var bookingTotalAmount = subtotal;
+	var promo = {};
 	const taxAmount = subtotal * 0.09;
 
 	const reviewBookingSubtotal = document.querySelector(
@@ -694,9 +684,10 @@ function applyCode() {
 	promoCodeValue = promoCodeInput.value.toLowerCase();
 	console.log(promoCodeValue);
 
-	var promo = promoCodes.find((e) => e.code === promoCodeValue);
+	promo = promoCodes.find((e) => e.code === promoCodeValue);
 	if (promo === undefined) {
 		alert("No such promo code...");
+		promo = {};
 	} else {
 		discountPercentage = promo.dp;
 		discount = discountPercentage * subtotal;
@@ -713,9 +704,154 @@ function applyCode() {
 
 function validatePayment() {
 	// Store booking data
-	//
+	// What do i have? :
+	// Cart (Rooms I want to book),
+	// Promo code used (can be empty),
+	// Booking amount after discount
+	var booking = {
+		// leave bookingID out first
+		roomsBooked: {},
+		totalAmount: 0,
+		promoCode: {},
+	};
+
+	console.log(booking);
+	console.log("After submitting, view cart", cart);
+	booking.roomsBooked = cart;
+	console.log("After submitting, view booking", booking.roomsBooked);
+	booking.totalAmount = bookingTotalAmount;
+	console.log("After submitting, view total amount", booking.totalAmount);
+
+	booking.promoCode = promo;
+	console.log("After submitting, view promo", booking.promoCode);
+	console.log(booking);
+
+	sessionStorage.setItem("booking", JSON.stringify(booking));
+	console.log(
+		"After submitting, view session storage",
+		sessionStorage.getItem("booking")
+	);
+	window.location.href = "/orderConfirmation.html";
 }
 
+/*=============== ORDER CONFIRMATION PAGE ===============*/
+function displayOrderConfirmation() {
+	const booking = JSON.parse(sessionStorage.getItem("booking"));
+	console.log(booking);
+	const bookedRooms = booking.roomsBooked;
+	console.log(bookedRooms);
+
+	const bookedRoomsContainer = document.querySelector(
+		"#selectedRoomContainer"
+	);
+	const bookedRoomTemplate = document.querySelector(
+		"[data-booked-room-template]"
+	);
+
+	bookedRooms.forEach((bookedRoom) => {
+		const bookedRoomCard = bookedRoomTemplate.content.cloneNode(true);
+
+		const img = bookedRoomCard.querySelector(".selectedRoomImage");
+		const selectedRoomName =
+			bookedRoomCard.querySelector(".selectedRoomName");
+		selectedRoomName.id = bookedRoom.roomName;
+		const selectedRoomCapacity = bookedRoomCard.querySelector(
+			".selectedRoomCapacity"
+		);
+		const selectedRoomLocation = bookedRoomCard.querySelector(
+			".selectedRoomLocation"
+		);
+		const selectedRoomDate =
+			bookedRoomCard.querySelector(".selectedRoomDate");
+		const selectedRoomTime =
+			bookedRoomCard.querySelector(".selectedRoomTime");
+
+		img.src = bookedRoom.image;
+		img.alt = "room image";
+		selectedRoomName.textContent = bookedRoom.roomName;
+		selectedRoomCapacity.textContent = bookedRoom.roomCapacity;
+		selectedRoomLocation.textContent = bookedRoom.roomLocation;
+		// roomPrice.textContent = room.price + ".00";
+
+		// Booking Date Logic
+		let bookingDate = bookedRoom.bookingDate;
+		const parts = bookingDate.split("-");
+		bookingDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+
+		selectedRoomDate.textContent = bookingDate;
+
+		// Booking Time Logic
+		let bookingTime = bookedRoom.bookingTime;
+		let bookingEndTime = 0;
+
+		if (bookingTime.split(":", 1) < 7 || bookingTime.split(":", 1) == 12) {
+			bookingTime = bookingTime + " PM";
+		} else {
+			bookingTime = bookingTime + " AM";
+		}
+
+		bookingEndTime = parseInt(bookingTime.split(":", 1)[0]) + 1;
+		if (bookingEndTime === 13) {
+			bookingEndTime = 1;
+		}
+		bookingEndTime = String(bookingEndTime);
+		bookingEndTime = String(bookingEndTime.padStart(2, "0")); // Ensure two digits with leading zero
+		bookingEndTime = bookingEndTime + ":00"; // Ensure two digits with leading zero
+
+		if (
+			bookingEndTime.split(":", 1) < 7 ||
+			bookingEndTime.split(":", 1) == 12
+		) {
+			bookingEndTime = bookingEndTime + " PM";
+		} else {
+			bookingEndTime = bookingEndTime + " AM";
+		}
+		selectedRoomTime.textContent = bookingTime + " - " + bookingEndTime;
+
+		bookedRoomsContainer.append(bookedRoomCard);
+	});
+
+	// Order Summary
+	subtotal = parseFloat(sessionStorage.getItem("subtotal"));
+	let taxAmount = subtotal * 0.09;
+
+	let promoCode = bookedRooms.promoCode;
+
+	if (promoCode != undefined) {
+		let discountPercentage = promoCode.dp;
+		console.log(discountPercentage);
+	} else {
+		discount = 0;
+	}
+	let bookingTotalAmount = bookedRooms.totalAmount;
+
+	console.log(subtotal);
+
+	const reviewBookingSubtotal = document.querySelector(
+		"#reviewBookingSubtotal"
+	);
+	const reviewBookingTaxes = document.querySelector("#reviewBookingTaxes");
+	const reviewBookingDiscount = document.querySelector(
+		"#reviewBookingDiscount"
+	);
+	const reviewTotalAmount = document.querySelector("#reviewBookingTotal");
+
+	reviewBookingSubtotal.textContent = "$" + String(subtotal.toFixed(2));
+	reviewBookingTaxes.textContent = "$" + String(taxAmount.toFixed(2));
+	reviewBookingDiscount.textContent = "$" + String(discount.toFixed(2));
+	reviewTotalAmount.textContent = "$" + String(bookingTotalAmount.toFixed(2));
+
+	const completePurchaseButton = document.getElementById(
+		"completePurchaseButton"
+	);
+	console.log(discount);
+}
+
+if (currentPage === "/orderConfirmation.html") {
+	document.addEventListener("DOMContentLoaded", (event) => {
+		displayOrderConfirmation();
+	});
+}
 /* 
 	let urlParams = new URLSearchParams(window.location.search);
 
@@ -816,3 +952,11 @@ function validatePayment() {
 
 		window.location.href = `orderConfirmation.html?roomId=${roomId}&roomImage=${roomImage}&roomName=${roomName}&roomLocation=${roomLocation}&roomCapacity=${roomCapacity}&roomPrice=${roomPrice}&bookingTime=${bookingTime}&bookingDate=${bookingDate}`;
 	}); */
+// const roomId = selectedRoomCopy.roomId;
+// const roomImage = selectedRoomCopy.image;
+// const roomName = selectedRoomCopy.roomName;
+// const roomLocation = selectedRoomCopy.roomLocation;
+// const roomCapacity = selectedRoomCopy.roomCapacity;
+// const roomPrice = selectedRoomCopy.roomPrice;
+// const bookingTime = selectedRoomCopy.bookingTime;
+// const bookingDate = selectedRoomCopy.bookingDate;

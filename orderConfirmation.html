@@ -78,7 +78,158 @@
 				</div>
 
 				<div id="receiptContainer">
-					<div id="selectedRoomContainer">
+					<div class="container" id="reviewPageContainer">
+						<div id="selectedRoomContainer">
+							<div class="selectedRoom">
+								<img
+									id="selectedRoomImage"
+									src="assets/img/images.jpg"
+									alt="room image"
+									width="140px"
+									height="140px"
+									style="border-radius: 10px"
+								/>
+								<div class="selectedRoomDescriptionCol">
+									<h1 id="selectedRoomName"></h1>
+									<div class="selectedRoomDescription">
+										<span class="material-symbols-outlined">
+											location_on
+										</span>
+										<span>Location: </span>
+										<span id="selectedRoomLocation"></span>
+									</div>
+									<div class="selectedRoomDescription">
+										<span class="material-symbols-outlined">
+											group
+										</span>
+										<span>Capacity: </span>
+										<span id="selectedRoomCapacity"></span>
+									</div>
+									<div class="selectedRoomDescription">
+										<span class="material-symbols-outlined">
+											calendar_today
+										</span>
+										<span>Date: </span>
+										<span id="selectedRoomDate"></span>
+									</div>
+									<div class="selectedRoomDescription">
+										<span class="material-symbols-outlined">
+											schedule
+										</span>
+										<span>Time: </span>
+										<span id="selectedRoomTime"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<div id="orderSummaryCardContainer">
+								<div class="orderSummaryCard">
+									<div class="orderSummaryInfo">
+										<h1>Subtotal:</h1>
+										<span id="reviewBookingSubtotal"></span>
+									</div>
+									<div class="orderSummaryInfo">
+										<h1>Tax:</h1>
+										<span id="reviewBookingTaxes"></span>
+									</div>
+									<div class="orderSummaryInfo">
+										<h1>Discount:</h1>
+										<span id="reviewBookingDiscount"></span>
+									</div>
+
+									<div
+										class="orderSummaryInfo"
+										id="reviewBookingTotal"
+									>
+										<h1>Total:</h1>
+										<span id="reviewTotalAmount"></span>
+									</div>
+								</div>
+							</div>
+							<!--  -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<template data-booked-room-template>
+			<div class="selectedRoom">
+				<img
+					class="selectedRoomImage"
+					src="assets/img/images.jpg"
+					alt="room image"
+					width="140px"
+					height="140px"
+					style="border-radius: 10px"
+				/>
+				<div class="selectedRoomDescriptionCol">
+					<h1 class="selectedRoomName"></h1>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined">
+							location_on
+						</span>
+						<span
+							>Location: <span class="selectedRoomLocation"></span
+						></span>
+					</div>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined"> group </span>
+						<span
+							>Capacity: <span class="selectedRoomCapacity"></span
+						></span>
+					</div>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined">
+							calendar_today
+						</span>
+						<span
+							>Date: <span class="selectedRoomDate"></span
+						></span>
+					</div>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined">
+							schedule
+						</span>
+						<span
+							>Time: <span class="selectedRoomTime"></span
+						></span>
+					</div>
+				</div>
+			</div>
+		</template>
+		<!--=============== SWIPER JS ===============-->
+		<script src=""></script>
+
+		<!--=============== MAIN JS ===============-->
+		<script src="assets/js/main.js" defer></script>
+	</body>
+</html>
+<!-- <div id="receiptDescription">
+						<div id="receiptRowOne">
+							<div class="receiptAmount" id="receiptSubtotal">
+								<h1>Subtotal</h1>
+								<span id="subtotalAmount">$2.00</span>
+							</div>
+							<div class="receiptAmount" id="receiptPromotion">
+								<h1>Promotion</h1>
+								<span id="promotionAmount">$1.00</span>
+							</div>
+							<div class="receiptAmount" id="recepitTaxes">
+								<h1>Taxes</h1>
+								<span id="taxesAmount">$0.45</span>
+							</div>
+						</div>
+						<div id="receiptRowTwo">
+							<div class="receiptAmount">
+								<h1>Total</h1>
+								<span id="receiptTotal">$1.00</span>
+							</div>
+						</div>
+					</div> -->
+
+<!-- <div id="selectedRoomContainer">
 						<div class="selectedRoom">
 							<img
 								id="selectedRoomImage"
@@ -119,82 +270,5 @@
 									<span id="selectedRoomTime"></span>
 								</div>
 							</div>
-							<div class="selectedRoomThirdCol">
-								<button type="button" id="modifyButton">
-									Modify
-								</button>
-							</div>
-						</div>
-					</div>
-					<!-- <div class="selectedRoom">
-						<img
-							src="assets/img/images.jpg"
-							alt="room image"
-							width="133px"
-							height="133px"
-							style="border-radius: 10px"
-						/>
-						<div class="roomDescriptionSecondCol">
-							<h1>Meeting Room A</h1>
-							<div class="roomDescription">
-								<span class="material-icons">
-									location_on
-								</span>
-								<span>Location: </span>
-								<span>HQ SIM, Block A</span>
-							</div>
-							<div class="roomDescription">
-								<span class="material-icons"> group </span>
-								<span>Capacity: </span>
-								<span>Up to 4 people</span>
-							</div>
-							<div id="bookingTimeDescription">
-								<div id="startTime">
-									<h1>Start</h1>
-									<h1>12:00 PM</h1>
-								</div>
-								<span class="material-symbols-outlined">
-									arrow_forward
-								</span>
-								<div id="endTime">
-									<h1>End</h1>
-									<h1>01:00 PM</h1>
-								</div>
-							</div>
-						</div>
-						<div class="roomDescriptionThirdCol">
-							<button>Modify</button>
 						</div>
 					</div> -->
-					<div id="receiptDescription">
-						<div id="receiptRowOne">
-							<div class="receiptAmount" id="receiptSubtotal">
-								<h1>Subtotal</h1>
-								<span id="subtotalAmount">$2.00</span>
-							</div>
-							<div class="receiptAmount" id="receiptPromotion">
-								<h1>Promotion</h1>
-								<span id="promotionAmount">$1.00</span>
-							</div>
-							<div class="receiptAmount" id="recepitTaxes">
-								<h1>Taxes</h1>
-								<span id="taxesAmount">$0.45</span>
-							</div>
-						</div>
-						<div id="receiptRowTwo">
-							<div class="receiptAmount">
-								<h1>Total</h1>
-								<span id="receiptTotal">$1.00</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</main>
-		<!--=============== SWIPER JS ===============-->
-		<script src=""></script>
-
-		<!--=============== MAIN JS ===============-->
-		<script src="assets/js/main.js" defer></script>
-	</body>
-</html>
