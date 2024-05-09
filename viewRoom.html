@@ -41,6 +41,7 @@
 						<li><a href="index.html">Book Now</a></li>
 						<li><a href="viewBooking.html">View Booking</a></li>
 						<li><a href="">Contact Us</a></li>
+						<li><a href="reviewPage.html">Cart</a></li>
 						<li>
 							<button type="button" href="" id="login-button">
 								Login
@@ -109,14 +110,18 @@
 			id="viewRoomPageContainer"
 			data-view-room-container
 		>
-			<button type="button" onclick="addToCart()">Add to cart</button>
+			<button
+				type="button"
+				id="continueButton"
+				onclick="continueToReviewPage()"
+			>
+				Continue
+			</button>
 		</div>
 
-		<div id="continueContainer">
+		<div id="addToCartContainer">
 			<div class="container">
-				<button type="button" onclick="continueToReviewPage()">
-					Continue
-				</button>
+				<button type="button" onclick="addToCart()">Add to cart</button>
 			</div>
 		</div>
 		<template id="roomCardTemplate" data-room-card-template>

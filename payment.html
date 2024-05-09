@@ -17,8 +17,6 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 		/>
-		
-		
 
 		<!--=============== SWIPER CSS ===============-->
 		<link rel="stylesheet" href="" />
@@ -46,8 +44,12 @@
 						<li><a href="index.html">Book Now</a></li>
 						<li><a href="viewBooking.html">View Booking</a></li>
 						<li><a href="">Contact Us</a></li>
+						<li><a href="reviewPage.html">Cart</a></li>
+
 						<li>
-							<button href="" id="login-button">Login</button>
+							<button type="button" id="login-button">
+								Login
+							</button>
 						</li>
 					</ul>
 				</nav>
@@ -72,76 +74,107 @@
 			</div>
 
 			<div class="container" id="paymentPageContainer">
-				<div id="paymentDetailContainer">
-					<h1>Payment Details</h1>
-					<div id="paymentDetail">
-						<label for="cardholderName">Cardholder Name</label
-						><br />
-						<input
-							type="text"
-							class="longInput"
-							id="cardholderName"
-							placeholder="1111 2222 3333 4444"
-						/><br />
-						<label for="cardNumber">Card Number</label><br />
-						<input
-							type="text"
-							placeholder="John Doe"
-							class="longInput"
-						/><br />
-
-						<div id="cardDetailThirdRow">
-							<div id="expiryDate">
-								<label for="expiryDate">Expiry Date</label
-								><br />
-								<input type="number" placeholder="MM/YY" />
-							</div>
-
-							<div id="cVV">
-								<label for="cVV">CVV</label><br />
-								<input type="number" placeholder="CVV" /><br />
-							</div>
-						</div>
-
-						<label for="promoCode">Promo Code</label>
-						<div id="promoCodeRow">
+				<form action="" onsubmit="validatePayment()">
+					<div id="paymentDetailContainer">
+						<h1>Payment Details</h1>
+						<div id="paymentDetail">
+							<label for="cardholderName">Cardholder Name</label
+							><br />
 							<input
 								type="text"
-								name="promoCode"
-								placeholder="SAVE20NOW"
+								pattern="[a-zA-Z]+"
+								class="longInput"
+								placeholder="John Doe"
+								id="cardholderName"
+								required
+							/><br />
+							<label for="cardNumber">Card Number</label><br />
+							<input
+								type="text"
+								placeholder="1111 2222 3333 4444"
+								pattern="^\d{16}$"
+								maxlength="16"
+								class="longInput"
+								required
+							/><br />
+
+							<div id="cardDetailThirdRow">
+								<label for="expiryDate">Expiry Date</label>
+								<div id="expiryDate">
+									<input
+										id="expiryMonth"
+										type="text"
+										placeholder="MM"
+										pattern="(0[1-9]|1[0-2])"
+										maxlength="2"
+										required
+									/>
+									<input
+										id="expiryYear"
+										type="text"
+										placeholder="YYYY"
+										maxlength="4"
+										required
+									/>
+								</div>
+
+								<label for="cVV">CVV</label>
+								<input
+									id="cVV"
+									type="text"
+									maxlength="3"
+									placeholder="CVV"
+									required
+								/><br />
+							</div>
+
+							<label for="promoCode">Promo Code</label>
+							<div id="promoCodeRow">
+								<input
+									type="text"
+									name="promoCode"
+									id="promoCode"
+									placeholder="SAVE20NOW"
+								/>
+								<button type="button" onclick="applyCode()">
+									Apply Code
+								</button>
+							</div>
+
+							<input
+								id="completePurchaseButton"
+								type="submit"
+								value="Complete Purchase"
 							/>
-
-							<button>Apply Code</button>
 						</div>
-
-						<button id="completePurchaseButton">
-							Complete Purchase
-						</button>
 					</div>
-				</div>
+				</form>
 				<div>
-					<div class="orderSummaryCard">
-						<div
-							class="orderSummaryInfo"
-							id="reviewBookingDuration"
-						>
-							<h1>Duration:</h1>
-							<span>1 hour</span>
-						</div>
-						<div
-							class="orderSummaryInfo"
-							id="reviewBookingSubtotal"
-						>
-							<h1>Subtotal:</h1>
-							<span>$2.00</span>
-						</div>
+					<div id="orderSummaryCardContainer">
+						<div class="orderSummaryCard">
+							<div class="orderSummaryInfo">
+								<h1>Subtotal:</h1>
+								<span id="reviewBookingSubtotal"></span>
+							</div>
+							<div class="orderSummaryInfo">
+								<h1>Tax:</h1>
+								<span id="reviewBookingTaxes"></span>
+							</div>
+							<div class="orderSummaryInfo">
+								<h1>Discount:</h1>
+								<span id="reviewBookingDiscount"></span>
+							</div>
 
-						<div class="orderSummaryInfo" id="reviewBookingTotal">
-							<h1>Total:</h1>
-							<span id="reviewTotalAmount">$2.00</span>
+							<div
+								class="orderSummaryInfo"
+								id="reviewBookingTotal"
+							>
+								<h1>Total:</h1>
+								<span id="reviewTotalAmount"></span>
+							</div>
 						</div>
-						<button id="checkoutButton">Checkout</button>
 					</div>
+					<!--  -->
 				</div>
 			</div>
 		</main>

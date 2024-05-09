@@ -44,6 +44,8 @@
 						<li><a href="index.html">Book Now</a></li>
 						<li><a href="viewBooking.html">View Booking</a></li>
 						<li><a href="">Contact Us</a></li>
+						<li><a href="reviewPage.html">Cart</a></li>
+
 						<li>
 							<button href="" id="login-button">Login</button>
 						</li>
@@ -69,73 +71,87 @@
 		</div>
 
 		<div class="container" id="reviewPageContainer">
-			<div id="selectedRoomContainer">
-				<div class="selectedRoom">
-					<img
-						id="selectedRoomImage"
-						src="assets/img/images.jpg"
-						alt="room image"
-						width="140px"
-						height="140px"
-						style="border-radius: 10px"
-					/>
-					<div class="selectedRoomDescriptionCol">
-						<h1 id="selectedRoomName"></h1>
-						<div class="selectedRoomDescription">
-							<span class="material-symbols-outlined">
-								location_on
-							</span>
-							<span>Location: </span>
-							<span id="selectedRoomLocation"></span>
-						</div>
-						<div class="selectedRoomDescription">
-							<span class="material-symbols-outlined">
-								group
-							</span>
-							<span>Capacity: </span>
-							<span id="selectedRoomCapacity"></span>
-						</div>
-						<div class="selectedRoomDescription">
-							<span class="material-symbols-outlined">
-								calendar_today
-							</span>
-							<span>Date: </span>
-							<span id="selectedRoomDate"></span>
-						</div>
-						<div class="selectedRoomDescription">
-							<span class="material-symbols-outlined">
-								schedule
-							</span>
-							<span>Time: </span>
-							<span id="selectedRoomTime"></span>
-						</div>
-					</div>
-					<div class="selectedRoomThirdCol">
-						<button type="button" id="modifyButton">Modify</button>
-					</div>
+			<div id="emptyCartDiv">
+				<div id="backDiv">
+					<span class="material-symbols-outlined">
+						chevron_left
+					</span>
+					<span>Back</span>
 				</div>
+				<h1 id="emptyCartText">Cart is Empty</h1>
 			</div>
+			<div id="selectedRoomContainer"></div>
+			<div id="orderSummaryCardContainer">
+				<div class="orderSummaryCard">
+					<div class="orderSummaryInfo">
+						<h1>Subtotal:</h1>
+						<span id="reviewBookingSubtotal"></span>
+					</div>
+					<div class="orderSummaryInfo">
+						<h1>Tax:</h1>
+						<span id="reviewBookingTaxes"></span>
+					</div>
 
-			<div class="orderSummaryCard">
-				<div class="orderSummaryInfo">
-					<h1>Subtotal:</h1>
-					<span id="reviewBookingSubtotal"></span>
+					<div style="font-size: 10px; color: rgba(0, 0, 0, 0.4)">
+						Promo Code to be applied in payment.
+					</div>
+					<div class="orderSummaryInfo" id="reviewBookingTotal">
+						<h1>Total:</h1>
+						<span id="reviewTotalAmount"></span>
+					</div>
+					<button id="checkoutButton">Checkout</button>
 				</div>
-				<div class="orderSummaryInfo">
-					<h1>Tax:</h1>
-					<span id="reviewBookingTaxes"></span>
-				</div>
-
-				<div style="font-size: 10px; color: rgba(0, 0, 0, 0.4)">
-					Promo Code to be applied in payment.
-				</div>
-				<div class="orderSummaryInfo" id="reviewBookingTotal">
-					<h1>Total:</h1>
-					<span id="reviewTotalAmount"></span>
-				</div>
-				<button id="checkoutButton">Checkout</button>
 			</div>
 		</div>
+
+		<template data-cart-room-template>
+			<div class="selectedRoom">
+				<img
+					class="selectedRoomImage"
+					src="assets/img/images.jpg"
+					alt="room image"
+					width="140px"
+					height="140px"
+					style="border-radius: 10px"
+				/>
+				<div class="selectedRoomDescriptionCol">
+					<h1 class="selectedRoomName"></h1>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined">
+							location_on
+						</span>
+						<span
+							>Location: <span class="selectedRoomLocation"></span
+						></span>
+					</div>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined"> group </span>
+						<span
+							>Capacity: <span class="selectedRoomCapacity"></span
+						></span>
+					</div>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined">
+							calendar_today
+						</span>
+						<span
+							>Date: <span class="selectedRoomDate"></span
+						></span>
+					</div>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined">
+							schedule
+						</span>
+						<span
+							>Time: <span class="selectedRoomTime"></span
+						></span>
+					</div>
+				</div>
+				<div class="selectedRoomThirdCol">
+					<button type="button" class="removeButton">Remove</button>
+				</div>
+			</div>
+		</template>
 
 		<!--=============== MAIN JS ===============-->
 		<script src="assets/js/main.js" defer></script>

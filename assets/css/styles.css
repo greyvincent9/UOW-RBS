@@ -375,7 +375,8 @@ select {
 }
 
 #viewRoomPageContainer {
-	/* display: flex; */
+	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	margin-top: 1rem;
 	padding-bottom: 80px;
@@ -404,13 +405,16 @@ select {
 }
 
 .roomDescription {
-	/* padding-top: 0.5rem; */
 	font-size: 14px;
 	display: flex;
 }
 
 .roomDescription span {
 	padding-right: 0.25rem;
+}
+
+.roomDescription > span.material-symbols-outlined {
+	font-size: 18px !important;
 }
 
 .roomDescriptionSecondCol {
@@ -436,7 +440,7 @@ select {
 	text-align: center;
 }
 
-#continueContainer {
+#addToCartContainer {
 	z-index: 99;
 	position: fixed;
 	bottom: 0;
@@ -447,9 +451,14 @@ select {
 	display: none;
 }
 
-#continueContainer > div {
+#addToCartContainer > div {
 	display: flex;
 	justify-content: end;
+}
+
+#continueButton {
+	display: inline-block;
+	align-self: flex-end;
 }
 /*=============== REVIEW PAGE ===============*/
 #reviewPageContainer {
@@ -458,6 +467,20 @@ select {
 	width: 885px;
 	margin-top: 1rem;
 	column-gap: 1rem;
+}
+
+#emptyCartDiv {
+	display: none;
+	cursor: pointer;
+}
+
+#backDiv {
+	line-height: 1.75;
+	display: flex;
+}
+
+#emptyCartText {
+	font-size: var(--fs-secondary-heading);
 }
 
 #selectedRoomContainer {
@@ -470,6 +493,7 @@ select {
 	border-radius: 20px;
 	padding: 1rem;
 	column-gap: 1rem;
+	margin-bottom: 2rem;
 }
 
 .selectedRoom img {
@@ -523,7 +547,7 @@ select {
 	background-color: var(--secondary-color);
 	border-radius: 15px;
 	padding: 1rem 1.5rem;
-	width: 255px;
+	min-width: 233px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 15px;
 }
@@ -569,19 +593,14 @@ select {
 	justify-content: space-between;
 	width: 885px;
 	margin-top: 1rem;
-	column-gap: 5rem;
+}
+
+#paymentDetailContainer {
+	max-width: 550px;
 }
 
 #paymentDetailContainer h1 {
 	font-size: 1.77rem;
-}
-
-#paymentDetailContainer button {
-	font-weight: 700;
-}
-
-#paymentDetailContainer {
-	flex-grow: 2;
 }
 
 #paymentDetail {
@@ -606,16 +625,19 @@ select {
 }
 
 #cardDetailThirdRow {
-	display: flex;
+	display: grid;
+	grid-template-rows: 15% auto;
+	grid-template-columns: 48% 48%;
 	justify-content: space-between;
 }
 
-#cardDetailThirdRow > input {
-	width: 40%;
+#cardDetailThirdRow label {
+	grid-row: 1;
 }
 
-#cVVInput {
-	width: 144px;
+#expiryDate {
+	display: grid;
+	grid-template-columns: 50% 50%;
 }
 
 #promoCodeRow {
