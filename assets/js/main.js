@@ -72,7 +72,7 @@ let rooms = [
 		name: "Room 103",
 		image: "/assets/img/images.jpg",
 		location: "UOW Campus - Library Level 1",
-		capacity: 4,
+		capacity: 1,
 		price: 2,
 		availability: {
 			"2024-05-06": {
@@ -106,7 +106,7 @@ let rooms = [
 		name: "Room 104",
 		image: "/assets/img/images.jpg",
 		location: "UOW Campus - Library Level 1",
-		capacity: 4,
+		capacity: 2,
 		price: 2,
 		availability: {
 			"2024-05-06": {
@@ -122,16 +122,16 @@ let rooms = [
 				"05:00": { booked: true },
 			},
 			"2024-05-07": {
-				"08:00": { booked: false },
-				"09:00": { booked: false },
-				"10:00": { booked: false },
-				"11:00": { booked: false },
-				"12:00": { booked: false },
-				"01:00": { booked: false },
-				"02:00": { booked: false },
-				"03:00": { booked: false },
-				"04:00": { booked: false },
-				"05:00": { booked: false },
+				"08:00": { booked: true },
+				"09:00": { booked: true },
+				"10:00": { booked: true },
+				"11:00": { booked: true },
+				"12:00": { booked: true },
+				"01:00": { booked: true },
+				"02:00": { booked: true },
+				"03:00": { booked: true },
+				"04:00": { booked: true },
+				"05:00": { booked: true },
 			},
 		},
 	},
@@ -160,13 +160,28 @@ const selectedLocation = urlParams.get("location");
 const selectedDate = urlParams.get("date");
 const selectedCapacity = urlParams.get("capacity");
 const datePicker = document.getElementById("searchDate");
+const searchLocationInput = document.getElementById("search-location-input");
+const searchCapacityInput = document.getElementById("search-capacity-input");
+if (sessionStorage.getItem("cart") !== null) {
+	cart = JSON.parse(sessionStorage.getItem("cart"));
+	console.log("cart is not null", cart);
+}
+
+var today = new Date();
+var formattedDate = today.toISOString().split("T")[0];
 var currentPage = window.location.pathname;
-// fetchAvailableRooms(selectedLocation, selectedDate, selectedCapacity);
+var selectedRoom = {
+	roomId: "",
+	image: "",
+	roomName: "",
+	roomLocation: "",
+	roomCapacity: "",
+	roomPrice: "",
+	bookingTime: "",
+	bookingDate: "",
+};
 
 if (currentPage === "/index.html") {
-	const datePicker = document.getElementById("searchDate");
-	var today = new Date();
-	var formattedDate = today.toISOString().split("T")[0];
 	datePicker.value = formattedDate;
 	datePicker.min = formattedDate;
 	let maxDate = new Date();
@@ -176,29 +191,90 @@ if (currentPage === "/index.html") {
 
 	datePicker.max = formattedMaxDate;
 } else if (currentPage === "/viewRoom.html") {
-	searchLocationInput = document.getElementById("search-location-input");
-	searchCapacityInput = document.getElementById("search-capacity-input");
-
 	datePicker.value = urlParams.get("date");
 
 	console.log(cart);
 
 	// If search param is empty
-	if (
-		selectedLocation === null ||
-		selectedDate === null ||
-		selectedCapacity === null
-	) {
-		fetchAvailableRooms("", formattedDate, "");
+	if (selectedLocation === null || selectedCapacity === null) {
+		document.addEventListener("DOMContentLoaded", (event) => {
+			fetchAvailableRooms("", selectedDate, "");
+		});
+
 		datePicker.value = formattedDate;
+	} else {
+		document.addEventListener("DOMContentLoaded", (event) => {
+			fetchAvailableRooms(
+				selectedLocation,
+				selectedDate,
+				selectedCapacity
+			);
+
+			if (selectedLocation !== "") {
+				selectedLocation;
+			}
+
+			var timeSlotButtons = document.querySelectorAll(".timeSlot");
+			console.log(timeSlotButtons);
+			const addToCartContainer =
+				document.getElementById("addToCartContainer");
+
+			timeSlotButtons.forEach((button) => {
+				button.addEventListener("click", (e) => {
+					timeSlotButtons.forEach((f) =>
+						f != e.target ? f.classList.remove("active") : ""
+					);
+					e.target.classList.toggle("active");
+
+					// Check if any button is active
+					const isActive = Array.from(timeSlotButtons).some((btn) =>
+						btn.classList.contains("active")
+					);
+
+					// Toggle display of the "hello" div based on the presence of the "active" class
+					addToCartContainer.style.display = isActive
+						? "block"
+						: "none";
+				});
+			});
+		});
 	}
-	document.addEventListener("DOMContentLoaded", (event) => {
-		fetchAvailableRooms(selectedLocation, selectedDate, selectedCapacity);
-	});
-	fetchAvailableRooms(selectedLocation, selectedDate, selectedCapacity);
 } else if (currentPage === "/reviewPage.html") {
 	document.addEventListener("DOMContentLoaded", (event) => {
 		displayReviewPage();
+	});
+}
+
+if (currentPage === "/payment.html") {
+	subtotal = parseFloat(sessionStorage.getItem("subtotal"));
+	console.log("subtotal: " + subtotal);
+	var discount = 0;
+	var bookingTotalAmount = subtotal;
+	var promo = {};
+	const taxAmount = subtotal * 0.09;
+
+	const reviewBookingSubtotal = document.querySelector(
+		"#reviewBookingSubtotal"
+	);
+	const reviewBookingTaxes = document.querySelector("#reviewBookingTaxes");
+	const reviewBookingDiscount = document.querySelector(
+		"#reviewBookingDiscount"
+	);
+
+	reviewBookingSubtotal.textContent = "$" + String(subtotal.toFixed(2));
+	reviewBookingTaxes.textContent = "$" + String(taxAmount.toFixed(2));
+	reviewBookingDiscount.textContent = "-$" + String(discount.toFixed(2));
+	reviewTotalAmount.textContent = "$" + String(bookingTotalAmount.toFixed(2));
+
+	const completePurchaseButton = document.getElementById(
+		"completePurchaseButton"
+	);
+	console.log(discount);
+}
+
+if (currentPage === "/orderConfirmation.html") {
+	document.addEventListener("DOMContentLoaded", (event) => {
+		displayOrderConfirmation();
 	});
 }
 
@@ -207,13 +283,10 @@ if (currentPage === "/index.html") {
 
 function searchRoom() {
 	alert("Searching...");
-	const searchLocationInput = document.getElementById(
-		"search-location-input"
-	);
+	const selectedCapacity = searchCapacityInput.value;
 	const searchDateInput = document.getElementById("searchDate");
 	const selectedLocation = searchLocationInput.value;
 	const selectedDate = searchDateInput.value;
-	console.log(selectedLocation);
 
 	// Validate selected date
 	if (!selectedDate) {
@@ -222,10 +295,6 @@ function searchRoom() {
 	}
 
 	// Get selected capacity (optional)
-	const searchCapacityInput = document.getElementById(
-		"search-capacity-input"
-	);
-	const selectedCapacity = searchCapacityInput.value;
 
 	// Redirect to viewRoom.html with selected date and capacity as URL parameters
 	window.location.href = `viewRoom.html?location=${selectedLocation}&date=${selectedDate}&capacity=${selectedCapacity}`;
@@ -233,11 +302,6 @@ function searchRoom() {
 
 /*=============== PAGE INDICATIOR ===============*/
 const roomPageIndicator = document.getElementById("roomPageIndicator");
-
-if (sessionStorage.getItem("cart") !== null) {
-	cart = JSON.parse(sessionStorage.getItem("cart"));
-	console.log("cart is not null", cart);
-}
 
 if (currentPage === "/viewRoom.html") {
 	document.getElementById("reviewPageIndicator").style.opacity = "40%";
@@ -264,20 +328,20 @@ function fetchAvailableRooms(location, date, capacity) {
 	// Check if location is empty
 	// Check if capacity is empty
 	// if not empty, pass in the input and return results
-
-	// Hide rooms that does not match location
-	console.log(cart);
-	console.log(sessionStorage.getItem("cart"));
-	if (sessionStorage.getItem("cart") !== null) {
-		// cart = JSON.parse(sessionStorage.getItem("cart"));
-		console.log("cart is not null", cart);
+	// Use Room Template
+	if (selectedLocation.value !== "") {
+		searchLocationInput.value = selectedLocation;
+	}
+	if (selectedCapacity.value !== "") {
+		searchCapacityInput.value = selectedCapacity;
 	}
 
-	// Use Room Template
 	const roomPageContainer = document.querySelector("#viewRoomPageContainer");
 	const roomCardTemplate = document.querySelector(
 		"[data-room-card-template]"
 	);
+
+	// Hide rooms that does not match location
 	rooms.forEach((room) => {
 		const roomCard = roomCardTemplate.content.cloneNode(true);
 		const img = roomCard.querySelector("img");
@@ -286,8 +350,9 @@ function fetchAvailableRooms(location, date, capacity) {
 		const roomCapacity = roomCard.querySelector(".roomCapacity");
 		const roomLocation = roomCard.querySelector(".roomLocation");
 		const roomPrice = roomCard.querySelector(".roomPrice");
-		const timeSlot = roomCard.querySelector(".timeSlot");
 
+		const roomC = roomCard.querySelector("[data-room-container]");
+		roomC.setAttribute("data-room-container", room.name);
 		img.src = room.image;
 		img.alt = "room image";
 		roomName.textContent = room.name;
@@ -374,47 +439,31 @@ function fetchAvailableRooms(location, date, capacity) {
 			roomDescriptionThirdCol.appendChild(noAvailableSlot);
 		}
 		roomPageContainer.append(roomCard);
-	});
 
-	return rooms;
+		var isVisible = true;
+
+		if (selectedLocation !== "") {
+			isVisible = selectedLocation === room.location;
+			if (selectedCapacity !== "") {
+				isVisible =
+					parseInt(selectedCapacity) === room.capacity &&
+					selectedLocation === room.location;
+			}
+		} else if (selectedCapacity !== "") {
+			isVisible = parseInt(selectedCapacity) === room.capacity;
+		}
+
+		if (!isVisible) {
+			console.log(roomCard);
+			roomC.style.display = "none";
+			console.log("is visible?", room.name, room.location, isVisible);
+		}
+	});
 }
-
-const timeSlotButtons = document.querySelectorAll(".timeSlot");
-const addToCartContainer = document.getElementById("addToCartContainer");
-
-timeSlotButtons.forEach((button) => {
-	isContinue = false;
-	button.addEventListener("click", (e) => {
-		timeSlotButtons.forEach((f) =>
-			f != e.target ? f.classList.remove("active") : ""
-		);
-		e.target.classList.toggle("active");
-
-		// Check if any button is active
-		const isActive = Array.from(timeSlotButtons).some((btn) =>
-			btn.classList.contains("active")
-		);
-
-		// Toggle display of the "hello" div based on the presence of the "active" class
-
-		addToCartContainer.style.display = isActive ? "block" : "none";
-	});
-});
 
 // Select time slot
 // When time slot button is selected, bookingTime and roomId is stored
 // as a variable.
-
-var selectedRoom = {
-	roomId: "",
-	image: "",
-	roomName: "",
-	roomLocation: "",
-	roomCapacity: "",
-	roomPrice: "",
-	bookingTime: "",
-	bookingDate: "",
-};
 
 function selectTime(id, time) {
 	selectedRoom.roomId = id;
@@ -652,32 +701,6 @@ function removeFromCart(roomName, bookingDate, bookingTime) {
 }
 
 /*=============== PAYMENT PAGE ===============*/
-if (currentPage === "/payment.html") {
-	subtotal = parseFloat(sessionStorage.getItem("subtotal"));
-	console.log("subtotal: " + subtotal);
-	var discount = 0;
-	var bookingTotalAmount = subtotal;
-	var promo = {};
-	const taxAmount = subtotal * 0.09;
-
-	const reviewBookingSubtotal = document.querySelector(
-		"#reviewBookingSubtotal"
-	);
-	const reviewBookingTaxes = document.querySelector("#reviewBookingTaxes");
-	const reviewBookingDiscount = document.querySelector(
-		"#reviewBookingDiscount"
-	);
-
-	reviewBookingSubtotal.textContent = "$" + String(subtotal.toFixed(2));
-	reviewBookingTaxes.textContent = "$" + String(taxAmount.toFixed(2));
-	reviewBookingDiscount.textContent = "$" + String(discount.toFixed(2));
-	reviewTotalAmount.textContent = "$" + String(bookingTotalAmount.toFixed(2));
-
-	const completePurchaseButton = document.getElementById(
-		"completePurchaseButton"
-	);
-	console.log(discount);
-}
 
 function applyCode() {
 	const promoCodeInput = document.getElementById("promoCode");
@@ -702,6 +725,19 @@ function applyCode() {
 	// Usually the same result as above, but find returns the element itself
 }
 
+function generateBookingID() {
+	// Get current timestamp
+	const timestamp = Date.now().toString();
+
+	// Generate random number with 6 digits
+	const randomNumber = Math.floor(100000 + Math.random() * 900000).toString();
+
+	// Concatenate timestamp and random number, and truncate to 9 digits
+	const bookingID = (timestamp + randomNumber).slice(0, 9);
+
+	return bookingID;
+}
+
 function validatePayment() {
 	// Store booking data
 	// What do i have? :
@@ -709,7 +745,7 @@ function validatePayment() {
 	// Promo code used (can be empty),
 	// Booking amount after discount
 	var booking = {
-		// leave bookingID out first
+		bookingId: 0,
 		roomsBooked: {},
 		totalAmount: 0,
 		promoCode: {},
@@ -726,7 +762,13 @@ function validatePayment() {
 	console.log("After submitting, view promo", booking.promoCode);
 	console.log(booking);
 
+	booking.bookingId = generateBookingID();
+
 	sessionStorage.setItem("booking", JSON.stringify(booking));
+
+	bookings.push(booking);
+	sessionStorage.setItem("bookings", JSON.stringify(bookings));
+	sessionStorage.setItem("cart", "[]");
 	console.log(
 		"After submitting, view session storage",
 		sessionStorage.getItem("booking")
@@ -747,6 +789,10 @@ function displayOrderConfirmation() {
 	const bookedRoomTemplate = document.querySelector(
 		"[data-booked-room-template]"
 	);
+	const reservationNumberText = document.querySelector(
+		"#roomReservationNumber"
+	);
+	reservationNumberText.textContent = booking.bookingId;
 
 	bookedRooms.forEach((bookedRoom) => {
 		const bookedRoomCard = bookedRoomTemplate.content.cloneNode(true);
@@ -815,17 +861,7 @@ function displayOrderConfirmation() {
 	subtotal = parseFloat(sessionStorage.getItem("subtotal"));
 	let taxAmount = subtotal * 0.09;
 
-	let promoCode = bookedRooms.promoCode;
-
-	if (promoCode != undefined) {
-		let discountPercentage = promoCode.dp;
-		console.log(discountPercentage);
-	} else {
-		discount = 0;
-	}
-	let bookingTotalAmount = bookedRooms.totalAmount;
-
-	console.log(subtotal);
+	let promoCode = booking.promoCode;
 
 	const reviewBookingSubtotal = document.querySelector(
 		"#reviewBookingSubtotal"
@@ -834,22 +870,106 @@ function displayOrderConfirmation() {
 	const reviewBookingDiscount = document.querySelector(
 		"#reviewBookingDiscount"
 	);
-	const reviewTotalAmount = document.querySelector("#reviewBookingTotal");
+	const reviewTotalAmount = document.querySelector("#reviewTotalAmount");
+	let bookingTotalAmount = booking.totalAmount;
+
+	if (Object.keys(booking.promoCode).length === 0) {
+		discount = 0;
+		console.log("check if there's discount", discount);
+		reviewTotalAmount.textContent =
+			"$" + String(bookingTotalAmount.toFixed(2));
+
+		console.log(bookingTotalAmount);
+	} else {
+		var discountPercentage = booking.promoCode.dp;
+		discount = discountPercentage * subtotal;
+	}
+
+	console.log(bookingTotalAmount);
 
 	reviewBookingSubtotal.textContent = "$" + String(subtotal.toFixed(2));
 	reviewBookingTaxes.textContent = "$" + String(taxAmount.toFixed(2));
-	reviewBookingDiscount.textContent = "$" + String(discount.toFixed(2));
+	reviewBookingDiscount.textContent = "-$" + String(discount.toFixed(2));
 	reviewTotalAmount.textContent = "$" + String(bookingTotalAmount.toFixed(2));
 
 	const completePurchaseButton = document.getElementById(
 		"completePurchaseButton"
 	);
-	console.log(discount);
 }
 
-if (currentPage === "/orderConfirmation.html") {
-	document.addEventListener("DOMContentLoaded", (event) => {
-		displayOrderConfirmation();
+displayBookings();
+function displayBookings() {
+	const booking = JSON.parse(sessionStorage.getItem("booking"));
+	console.log(booking);
+	const bookedRooms = booking.roomsBooked;
+	console.log(bookedRooms);
+
+	const bookedRoomContainer = document.querySelector("#bookedRoomContainer");
+	const bookedRoomTemplate = document.querySelector(
+		"[data-booked-room-template]"
+	);
+
+	bookedRooms.forEach((bookedRoom) => {
+		const bookedRoomCard = bookedRoomTemplate.content.cloneNode(true);
+
+		const img = bookedRoomCard.querySelector(".selectedRoomImage");
+		const selectedRoomName =
+			bookedRoomCard.querySelector(".selectedRoomName");
+		selectedRoomName.id = bookedRoom.roomName;
+		const selectedRoomCapacity = bookedRoomCard.querySelector(
+			".selectedRoomCapacity"
+		);
+		const selectedRoomLocation = bookedRoomCard.querySelector(
+			".selectedRoomLocation"
+		);
+		const selectedRoomDate =
+			bookedRoomCard.querySelector(".selectedRoomDate");
+		const selectedRoomTime =
+			bookedRoomCard.querySelector(".selectedRoomTime");
+
+		img.src = bookedRoom.image;
+		img.alt = "room image";
+		selectedRoomName.textContent = bookedRoom.roomName;
+		selectedRoomCapacity.textContent = bookedRoom.roomCapacity;
+		selectedRoomLocation.textContent = bookedRoom.roomLocation;
+		// roomPrice.textContent = room.price + ".00";
+
+		// Booking Date Logic
+		let bookingDate = bookedRoom.bookingDate;
+		const parts = bookingDate.split("-");
+		bookingDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+
+		selectedRoomDate.textContent = bookingDate;
+
+		// Booking Time Logic
+		let bookingTime = bookedRoom.bookingTime;
+		let bookingEndTime = 0;
+
+		if (bookingTime.split(":", 1) < 7 || bookingTime.split(":", 1) == 12) {
+			bookingTime = bookingTime + " PM";
+		} else {
+			bookingTime = bookingTime + " AM";
+		}
+
+		bookingEndTime = parseInt(bookingTime.split(":", 1)[0]) + 1;
+		if (bookingEndTime === 13) {
+			bookingEndTime = 1;
+		}
+		bookingEndTime = String(bookingEndTime);
+		bookingEndTime = String(bookingEndTime.padStart(2, "0")); // Ensure two digits with leading zero
+		bookingEndTime = bookingEndTime + ":00"; // Ensure two digits with leading zero
+
+		if (
+			bookingEndTime.split(":", 1) < 7 ||
+			bookingEndTime.split(":", 1) == 12
+		) {
+			bookingEndTime = bookingEndTime + " PM";
+		} else {
+			bookingEndTime = bookingEndTime + " AM";
+		}
+		selectedRoomTime.textContent = bookingTime + " - " + bookingEndTime;
+
+		bookedRoomContainer.append(bookedRoomCard);
 	});
 }
 /* 

@@ -660,15 +660,10 @@ select {
 	height: 40px;
 }
 
-/*=============== VIEW BOOKING PAGE ===============*/
-#viewBookingContainer {
-	padding: 2rem 0;
+#reviewBookingDiscount {
+	color: red;
 }
 
-.pageHeading {
-	font-size: 1.77rem;
-	margin-bottom: 1rem;
-}
 /*=============== ORDER CONFIRMATION PAGE ===============*/
 #orderConfirmationText {
 	padding: 2rem 0;
@@ -708,6 +703,25 @@ select {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
+}
+
+/*=============== VIEW BOOKING PAGE ===============*/
+#viewBookingContainer {
+	padding: 2rem 7rem;
+}
+
+.pageHeading {
+	font-size: 1.77rem;
+	margin-bottom: 1rem;
+}
+
+#bookingsActionsColumn {
+	display: flex;
+	align-items: flex-end;
+}
+
+#bookingsActions > button {
+	margin-left: 2rem;
 }
 
 /*=============== BREAKPOINTS ===============*/

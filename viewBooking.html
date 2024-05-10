@@ -63,49 +63,60 @@
 		<main>
 			<div class="container" id="viewBookingContainer">
 				<h1 class="pageHeading">Bookings</h1>
-
-				<div class="selectedRoom">
-					<img
-						src="assets/img/images.jpg"
-						alt="room image"
-						width="133px"
-						height="133px"
-						style="border-radius: 10px"
-					/>
-					<div class="roomDescriptionSecondCol">
-						<h1>Meeting Room A</h1>
-						<div class="roomDescription">
-							<span class="material-icons"> location_on </span>
-							<span>Location: </span>
-							<span>HQ SIM, Block A</span>
-						</div>
-						<div class="roomDescription">
-							<span class="material-icons"> group </span>
-							<span>Capacity: </span>
-							<span>Up to 4 people</span>
-						</div>
-						<div id="bookingTimeDescription">
-							<div id="startTime">
-								<h1>Start</h1>
-								<h1>12:00 PM</h1>
-							</div>
-							<span class="material-symbols-outlined">
-								arrow_forward
-							</span>
-							<div id="endTime">
-								<h1>End</h1>
-								<h1>01:00 PM</h1>
-							</div>
-						</div>
+				<div id="bookedRoomContainer"></div>
+			</div>
+		</main>
+		<template data-booked-room-template>
+			<div class="selectedRoom">
+				<img
+					class="selectedRoomImage"
+					src="assets/img/images.jpg"
+					alt="room image"
+					width="140px"
+					height="140px"
+					style="border-radius: 10px"
+				/>
+				<div class="selectedRoomDescriptionCol">
+					<h1 class="selectedRoomName"></h1>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined">
+							location_on
+						</span>
+						<span
+							>Location: <span class="selectedRoomLocation"></span
+						></span>
 					</div>
-					<div class="roomDescriptionThirdCol">
-						<button>Modify</button>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined"> group </span>
+						<span
+							>Capacity: <span class="selectedRoomCapacity"></span
+						></span>
+					</div>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined">
+							calendar_today
+						</span>
+						<span
+							>Date: <span class="selectedRoomDate"></span
+						></span>
+					</div>
+					<div class="selectedRoomDescription">
+						<span class="material-symbols-outlined">
+							schedule
+						</span>
+						<span
+							>Time: <span class="selectedRoomTime"></span
+						></span>
+					</div>
+				</div>
+				<div id="bookingsActionsColumn">
+					<div id="bookingsActions">
+						<button>Check In</button>
+						<button>Cancel</button>
 					</div>
 				</div>
 			</div>
-		</main>
-		<!--=============== SWIPER JS ===============-->
-		<script src=""></script>
+		</template>
 
 		<!--=============== MAIN JS ===============-->
 		<script src="assets/js/main.js" defer></script>
